@@ -16,6 +16,7 @@ namespace Client
             _systems
                 .Add (new TimerInitSystem ())
                 .Add (new TimerRunSystem ())
+                .Add (new TickSystem())
 
                 // register additional worlds here, for example:
                 // .AddWorld (new EcsWorld (), "events")

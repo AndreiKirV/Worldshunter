@@ -15,7 +15,10 @@ namespace Client
             int entity = _world.Value.NewEntity();
 
             ref TimerComp timerComp = ref _timerPool.Value.Add(entity);
-            timerComp.MB = timer;
+            timerComp.ViewText = timer.Dial;
+            timerComp.Speed = 1;
+            timerComp.Value = 0;
+            timerComp.ViewText.text = "00 : 00";
         }
     }
 }
