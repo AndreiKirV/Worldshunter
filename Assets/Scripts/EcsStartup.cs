@@ -6,6 +6,7 @@ namespace Client
 {
     sealed class EcsStartup : MonoBehaviour
     {
+        [SerializeField] private GameObject _tilePref;
         EcsWorld _world;
         IEcsSystems _systems;
 
@@ -14,9 +15,10 @@ namespace Client
             _world = new EcsWorld();
             _systems = new EcsSystems(_world);
             _systems
-                .Add (new TimerInitSystem ())
-                .Add (new TimerSystem ())
-                .Add (new TickSystem())//TODO для примера, убрать
+                .Add(new TimerInitSystem())
+                .Add(new TimerSystem())
+                .Add(new TickSystem())//TODO для примера, убрать
+                .Add(new PlaygroundInitSystem(_tilePref.GetComponent<TileMB>()))
 
                 // register additional worlds here, for example:
                 // .AddWorld (new EcsWorld (), "events")
