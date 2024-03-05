@@ -1227,6 +1227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tilePref: {fileID: 4954281621771043257, guid: 1a15473782a3e2c46ade381cbd41a2a7, type: 3}
+  _tilePosY: 10
 --- !u!1 &1050738849
 GameObject:
   m_ObjectHideFlags: 0
