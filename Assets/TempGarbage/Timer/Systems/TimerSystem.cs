@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Client
 {
-    sealed class TimerRunSystem : IEcsRunSystem
+    sealed class TimerSystem : IEcsRunSystem
     {
         private EcsWorldInject _world = default;
         private EcsPoolInject<TimerComp> _timerPool;

@@ -14,7 +14,6 @@ namespace Client
         {
             foreach (var entity in _tickFilter.Value)
             {
-                Debug.Log(entity);
                 _tickFilter.Pools.Inc1.Del(entity);
 
                 foreach (var entityTimer in _timerCompFilter.Value)

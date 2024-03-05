@@ -15,8 +15,8 @@ namespace Client
             _systems = new EcsSystems(_world);
             _systems
                 .Add (new TimerInitSystem ())
-                .Add (new TimerRunSystem ())
-                .Add (new TickSystem())
+                .Add (new TimerSystem ())
+                .Add (new TickSystem())//TODO для примера, убрать
 
                 // register additional worlds here, for example:
                 // .AddWorld (new EcsWorld (), "events")
