@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class TileMB : MonoBehaviour
 {
-    [SerializeField] GameObject pref;
-    
-    private void OnMouseDown() 
+    [SerializeField] public MeshRenderer Mesh;
+    public GameObject GameObject => this.gameObject;
+    public Transform Transform => this.transform;
+
+    private void OnMouseDown()
     {
-        if(pref != null)
-        Instantiate(pref, this.transform);
         Debug.Log(this.name);
     }
 }

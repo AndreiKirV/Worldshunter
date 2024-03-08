@@ -1228,6 +1228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tilePref: {fileID: 4954281621771043257, guid: 1a15473782a3e2c46ade381cbd41a2a7, type: 3}
   _tilePosY: 10
+  _data:
+    Tiles: []
 --- !u!1 &1050738849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,7 +1488,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069513149}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
