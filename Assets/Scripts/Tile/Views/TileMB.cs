@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,11 +6,13 @@ using UnityEngine;
 public class TileMB : MonoBehaviour
 {
     [SerializeField] public MeshRenderer Mesh;
+    public Vector2 Pos => new Vector2(transform.localPosition.x, transform.localPosition.z);
     public GameObject GameObject => this.gameObject;
     public Transform Transform => this.transform;
+    public Action<TileMB> OnMouseDownAction;
 
     private void OnMouseDown()
     {
-        Debug.Log(this.name);
+        OnMouseDownAction?.Invoke(this);
     }
 }
