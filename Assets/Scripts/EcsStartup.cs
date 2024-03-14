@@ -12,6 +12,8 @@ namespace Client
         [SerializeField] private Data _data;
         EcsWorld _world;
         IEcsSystems _systems;
+        
+        //_globalInitSystems.Inject(_state);
 
         void Start()
         {
@@ -27,6 +29,7 @@ namespace Client
                 //TODO Tile
                 .Add(new PlaygroundInitSystem(_tilePref.GetComponent<TileMB>(), _tilePosY))
                 .Add(new TileGravitySystems())
+                .Add(new TileSpawnSystem())
                 //TODO Tile
 
                 // register additional worlds here, for example:

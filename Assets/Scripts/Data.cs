@@ -11,7 +11,6 @@ namespace Saves
     {
         private static Data instance;
         public List<TileMB> Tiles = new List<TileMB>();
-        public int V = 0;
 
         public static Data GetInstance()
         {

@@ -9,10 +9,10 @@ public class TileMB : MonoBehaviour
     public Vector2 Pos => new Vector2(transform.localPosition.x, transform.localPosition.z);
     public GameObject GameObject => this.gameObject;
     public Transform Transform => this.transform;
-    public Action<TileMB> OnMouseDownAction;
+    public int Entity;
 
     private void OnMouseDown()
     {
-        OnMouseDownAction?.Invoke(this);
+        Debug.Log(Entity);
     }
 }
