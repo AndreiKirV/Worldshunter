@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Leopotam.EcsLite;
 using UnityEngine;
 
 public class TileMB : MonoBehaviour
@@ -11,8 +12,15 @@ public class TileMB : MonoBehaviour
     public Transform Transform => this.transform;
     public int Entity;
 
+    private EcsWorld _world;
+
+    public void SetWorld(EcsWorld world)
+    {
+        _world = world;
+    }
+
     private void OnMouseDown()
     {
-        Debug.Log(Entity);
+        _world.GetPool<Client.SpawnByTileEvent>().Add(Entity);
     }
 }

@@ -1,27 +1,31 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Client;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Saves
+
+[Serializable]
+public class Data
 {
-    [Serializable]
-    public class Data
+    public Map Map = new Map();
+
+    public Data()
     {
-        private static Data instance;
-        public List<TileMB> Tiles = new List<TileMB>();
-
-        public static Data GetInstance()
-        {
-            if (instance == null)
-                instance = new Data();
-            return instance;
-        }
-
-        private Data()
-        {
-
-        }
     }
+    //пока синглтон не нужен, может вдруг 
+    /* private static Data instance;
+
+    public static Data GetInstance()
+    {
+        if (instance == null)
+            instance = new Data();
+        return instance;
+    }
+
+    private Data()
+    {
+
+    } */
 }

@@ -1226,11 +1226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf3064cb0a04cd478a821af92aa03b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tilePref: {fileID: 4954281621771043257, guid: 1a15473782a3e2c46ade381cbd41a2a7, type: 3}
+  _tilePref: {fileID: 6237665126161083904, guid: 1a15473782a3e2c46ade381cbd41a2a7, type: 3}
   _tilePosY: 10
-  _data:
-    Tiles: []
-    V: 0
 --- !u!1 &1050738849
 GameObject:
   m_ObjectHideFlags: 0
