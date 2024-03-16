@@ -21,6 +21,6 @@ public class TileMB : MonoBehaviour
 
     private void OnMouseDown()
     {
-        _world.GetPool<Client.SpawnByTileEvent>().Add(Entity);
+        _world.GetPool<Client.ClickTileEvent>().Add(Entity);
     }
 }

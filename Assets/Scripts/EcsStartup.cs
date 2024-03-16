@@ -36,6 +36,12 @@ namespace Client
                 .Add(new TileGravitySystems())
                 .Add(new TileSpawnSystem())
                 //TODO Tile
+
+                //TODO events
+                .Add(new EventSystem())
+                //TODO events
+
+                
                 ;
             // register additional worlds here, for example:
             // .AddWorld (new EcsWorld (), "events")

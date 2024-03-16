@@ -11,20 +11,32 @@ namespace Client
         private EcsWorldInject _world = default;
 
         private EcsFilterInject<Inc<SpawnByTileEvent, TileComp>> _spawnByTileFilter = default;
+        private EcsFilterInject<Inc<TimerComp>> _timerFilter = default;
 
         private EcsPoolInject<TileComp> _tilePool;
         private EcsPoolInject<MustFallComp> _mustFallPool;
+        private EcsPoolInject<TimerComp> _timerPool;
+
+        private float _timeSpawn = 2;
+        private float _currentTime;
+        private bool _isOneByOne = true;
 
         public void Run(IEcsSystems systems)
         {
+            _currentTime += Time.deltaTime;/* 
+
+            foreach (var entity in _timerFilter.Value)
+            {
+                TimerComp timerComp = _timerPool.Value.Get(entity);//TODO дописать по таемеру
+            } */
+
             foreach (var entitySpawnByTile in _spawnByTileFilter.Value)
             {
                 TileComp tileComp = _tilePool.Value.Get(entitySpawnByTile);
-
                 SetNewTiles(tileComp.MB);
 
-                _spawnByTileFilter.Pools.Inc1.Del(entitySpawnByTile);
                 Debug.Log($"Нажали на тайл {tileComp.MB.Pos}");
+                _spawnByTileFilter.Pools.Inc1.Del(entitySpawnByTile);
             }
         }
 
@@ -34,8 +46,8 @@ namespace Client
             {
                 for (int i = (int)_data.Value.Map.MinPosition.y; i <= _data.Value.Map.MaxPosition.y; i++)
                 {
-                    Debug.Log($"поле есть {_data.Value.Map.Playground.name}");
-                    TileMB tempTile = Object.Instantiate<TileMB>(_data.Value.Map.TilePref, _data.Value.Map.Playground.transform);
+                    TileMB tempTile = SetTile();//TODO вывести в отдельный метод
+
                     tempTile.transform.localPosition = new Vector3(_data.Value.Map.MaxPosition.x + 1, _data.Value.Map.TilePosY, i);
                     tempTile.name = $"{_data.Value.Map.TilePref.name} [{_data.Value.Map.MaxPosition.x + 1}]:[{i}]";
                     SetDeltaPos(tempTile.Pos);
@@ -58,8 +70,8 @@ namespace Client
             {
                 for (int i = (int)_data.Value.Map.MinPosition.y; i <= _data.Value.Map.MaxPosition.y; i++)
                 {
-                    Debug.Log($"поле есть {_data.Value.Map.Playground.name}");
-                    TileMB tempTile = Object.Instantiate<TileMB>(_data.Value.Map.TilePref, _data.Value.Map.Playground.transform);
+                    TileMB tempTile = SetTile();
+
                     tempTile.transform.localPosition = new Vector3(_data.Value.Map.MinPosition.x - 1, _data.Value.Map.TilePosY, i);
                     tempTile.name = $"{_data.Value.Map.TilePref.name} [{_data.Value.Map.MinPosition.x - 1}]:[{i}]";
                     SetDeltaPos(tempTile.Pos);
@@ -83,8 +95,8 @@ namespace Client
             {
                 for (int i = (int)_data.Value.Map.MinPosition.x; i <= _data.Value.Map.MaxPosition.x; i++)
                 {
-                    Debug.Log($"поле есть {_data.Value.Map.Playground.name}");
-                    TileMB tempTile = Object.Instantiate<TileMB>(_data.Value.Map.TilePref, _data.Value.Map.Playground.transform);
+                    TileMB tempTile = SetTile();
+
                     tempTile.transform.localPosition = new Vector3(i, _data.Value.Map.TilePosY, _data.Value.Map.MaxPosition.y + 1);
                     tempTile.name = $"{_data.Value.Map.TilePref.name} [{i}]:[{_data.Value.Map.MaxPosition.y + 1}]";
                     SetDeltaPos(tempTile.Pos);
@@ -107,8 +119,8 @@ namespace Client
             {
                 for (int i = (int)_data.Value.Map.MinPosition.x; i <= _data.Value.Map.MaxPosition.x; i++)
                 {
-                    Debug.Log($"поле есть {_data.Value.Map.Playground.name}");
-                    TileMB tempTile = Object.Instantiate<TileMB>(_data.Value.Map.TilePref, _data.Value.Map.Playground.transform);
+                    TileMB tempTile = SetTile();
+
                     tempTile.transform.localPosition = new Vector3(i, _data.Value.Map.TilePosY, _data.Value.Map.MinPosition.y - 1);
                     tempTile.name = $"{_data.Value.Map.TilePref.name} [{i}]:[{_data.Value.Map.MinPosition.y - 1}]";
                     SetDeltaPos(tempTile.Pos);
@@ -127,6 +139,13 @@ namespace Client
 
                 _data.Value.Map.MinPosition = new Vector2(_data.Value.Map.MinPosition.x, _data.Value.Map.MinPosition.y - 1);
             }
+        }
+
+        private TileMB SetTile()
+        {
+            TileMB tempTile = Object.Instantiate<TileMB>(_data.Value.Map.TilePref, _data.Value.Map.Playground.transform);
+            _currentTime = 0;
+            return tempTile;
         }
 
         private void SetDeltaPos(Vector2 target)
