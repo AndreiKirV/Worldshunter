@@ -18,18 +18,17 @@ namespace Client
 
         public void Init(IEcsSystems systems)
         {
-            _playground = GameObject.FindObjectOfType<PlaygroundMB>();
-            _data.Value.Map.Playground = _playground;
+            _playground = _data.Value.Map.Playground;
 
             for (int i = -1; i <= 1; i++)
             {
                 for (int j = -1; j <= 1; j++)
                 {
-                    TileMB tempTile = Object.Instantiate<TileMB>(_data.Value.Map.TilePref, _playground.transform);
-                    tempTile.transform.localPosition = new Vector3(i, _data.Value.Map.TilePosY, j);
+                    TileMB tempTile = SpawnSystem.StartSpawn<TileMB>(_playground.transform, _data.Value.Map.TilePref);//Object.Instantiate<TileMB>(_data.Value.Map.TilePref, _playground.transform);
+                    tempTile.transform.localPosition = new Vector3(i, _data.Value.Map.TileStartPosY, j);
                     tempTile.name = $"{_data.Value.Map.TilePref.name} [{i}]:[{j}]";
                     _data.Value.Map.Tiles.Add(tempTile);
-                    SetDeltaPos(tempTile.Pos);
+                    _data.Value.Map.SetDeltaPos(tempTile.Pos);
 
                     int entity = _world.Value.NewEntity();
                     ref TileComp tileComp = ref _tilePool.Value.Add(entity);
@@ -37,7 +36,6 @@ namespace Client
                     tempTile.Entity = entity;
 
                     ref MustFallComp mustFallComp = ref _mustFallPool.Value.Add(entity);
-                    mustFallComp.Transform = tileComp.MB.Transform;
                 }
             }
 
@@ -45,14 +43,6 @@ namespace Client
             {
                 item.SetWorld(_world.Value);
             }
-        }
-
-        private void SetDeltaPos(Vector2 target)
-        {
-            if (target.x > _data.Value.Map.MaxPosition.x && target.y > _data.Value.Map.MaxPosition.y)
-                _data.Value.Map.MaxPosition = target;
-            else if (target.x < _data.Value.Map.MinPosition.x && target.y < _data.Value.Map.MinPosition.y)
-                _data.Value.Map.MinPosition = target;
         }
     }
 }

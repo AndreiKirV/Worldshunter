@@ -10,9 +10,10 @@ namespace Client
         IEcsSystems _systems;
 
         //внешка
-        [SerializeField] private TileMB _tilePref;
-        [SerializeField] private float _tilePosY;
-        
+        [SerializeField] private Map _map;
+        [SerializeField] private Gravity _gravity;
+        [SerializeField] private GameChipMB _gameChipPref;
+
         private Data _data;
 
         void Start()
@@ -20,8 +21,9 @@ namespace Client
             _world = new EcsWorld();
 
             _data = new Data();
-            _data.Map.TilePref = _tilePref;
-            _data.Map.TilePosY = _tilePosY;
+            _data.Map = _map;
+            _data.Gravity = _gravity;
+            _data.GameChipPref = _gameChipPref;
 
             _systems = new EcsSystems(_world);
             _systems
@@ -29,7 +31,7 @@ namespace Client
                 .Add(new TimerInitSystem())
                 .Add(new TimerSystem())
                 .Add(new TickSystem())//TODO для примера, убрать
-                //TODO Timer
+                                      //TODO Timer
 
                 //TODO Tile
                 .Add(new PlaygroundInitSystem())
@@ -37,11 +39,16 @@ namespace Client
                 .Add(new TileSpawnSystem())
                 //TODO Tile
 
+                //TODO GameChip
+                .Add(new GameChipSpawnSystem())
+                .Add(new GameChipGravitySystems())
+                //TODO GameChip
+
                 //TODO events
                 .Add(new EventSystem())
                 //TODO events
 
-                
+
                 ;
             // register additional worlds here, for example:
             // .AddWorld (new EcsWorld (), "events")

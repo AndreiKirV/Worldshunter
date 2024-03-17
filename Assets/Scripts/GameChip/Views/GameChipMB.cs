@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using Leopotam.EcsLite;
 using UnityEngine;
 
-public class TileMB : MonoBehaviour
+
+public class GameChipMB : MonoBehaviour
 {
     [SerializeField] public MeshRenderer Mesh;
     [SerializeField] public BoxCollider BoxCollider;
+    
     public Vector2 Pos => new Vector2(transform.localPosition.x, transform.localPosition.z);
     public GameObject GameObject => this.gameObject;
     public Transform Transform => this.transform;
@@ -22,6 +24,6 @@ public class TileMB : MonoBehaviour
 
     private void OnMouseDown()
     {
-        _world.GetPool<Client.ClickTileEvent>().Add(Entity);
+        Debug.Log($"Кликнули по GameChipMB {this.gameObject.name}");
     }
 }

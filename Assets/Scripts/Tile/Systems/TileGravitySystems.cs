@@ -6,12 +6,12 @@ namespace Client
 {
     sealed class TileGravitySystems : IEcsRunSystem
     {
-        private EcsFilterInject<Inc<TileComp, MustFallComp>> _tileFilter = default;
-        private EcsFilterInject<Inc<TimerComp>> _timerFilter = default;
+        private EcsCustomInject<Data> _data = default;
+
+        private EcsFilterInject<Inc<TileComp, MustFallComp>, Exc<GameChipComp>> _tileFilter = default;
+
         private EcsPoolInject<TileComp> _tilePool;
         private EcsPoolInject<MustFallComp> _mustFallPool;
-        private float _speed = 50;
-        bool _isOneByOne = true;
 
         public void Run(IEcsSystems systems)
         {
@@ -25,19 +25,20 @@ namespace Client
                     if (!isProcessing)
                     {
                         // Устанавливаем флаг в true, чтобы указать, что мы начали обрабатывать текущий элемент
-                        if(_isOneByOne)
+                        if(_data.Value.Gravity.IsOneByOne)
                         isProcessing = true;
 
                         TileComp tempTileComp = _tilePool.Value.Get(entityTile);
 
                         if (tempTileComp.MB.Transform.localPosition.y > 0)
                         {
-                            tempTileComp.MB.Transform.localPosition = new Vector3(tempTileComp.MB.Transform.localPosition.x, tempTileComp.MB.Transform.localPosition.y - Time.deltaTime * _speed, tempTileComp.MB.Transform.localPosition.z);
+                            tempTileComp.MB.Transform.localPosition = new Vector3(tempTileComp.MB.Transform.localPosition.x, tempTileComp.MB.Transform.localPosition.y - Time.deltaTime * _data.Value.Gravity.Scale, tempTileComp.MB.Transform.localPosition.z);
                         }
                         else
                         {
                             tempTileComp.MB.Mesh.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                             tempTileComp.MB.Transform.localPosition = new Vector3(tempTileComp.MB.Transform.localPosition.x, 0, tempTileComp.MB.GameObject.transform.localPosition.z);
+                            tempTileComp.MB.BoxCollider.enabled = true;
                             _mustFallPool.Value.Del(tempTileComp.MB.Entity);
                         }
                     }

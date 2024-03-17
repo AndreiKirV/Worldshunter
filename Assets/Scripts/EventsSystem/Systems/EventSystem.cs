@@ -13,6 +13,7 @@ namespace Client
 
         private EcsPoolInject<TileComp> _tilePool;
         private EcsPoolInject<SpawnByTileEvent> _spawnByTileEventPool;
+        private EcsPoolInject<SpawnByGameChipEvent> _spawnByGameChipEventPool;
         private EcsPoolInject<ClickTileEvent> _clickTileEventPool;
 
         public void Run(IEcsSystems systems)
@@ -21,8 +22,8 @@ namespace Client
             {
                 TileComp tileComp = _tilePool.Value.Get(entity);
                 
-                _spawnByTileEventPool.Value.Add(entity);//TODO Эвент спавна
-
+                _spawnByTileEventPool.Value.Add(entity);//TODO Эвент спавна тайла
+                _spawnByGameChipEventPool.Value.Add(entity);//TODO эвент спавна игровоко айтима
 
                 Debug.Log($"EventSystem: Кликнули на тайл {tileComp.MB.Pos}");
                 //Конец эвента
