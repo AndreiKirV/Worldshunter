@@ -6,7 +6,7 @@ namespace Client
 {
     sealed class GameChipSpawnSystem : SpawnSystem
     {
-        private EcsFilterInject<Inc<SpawnByGameChipEvent, TileComp>> _spawnByGameChipFilter = default;
+        private EcsFilterInject<Inc<SpawnByGameChipEvent, TileComp>, Exc<MustFallComp>> _spawnByGameChipFilter = default;
 
         private EcsPoolInject<TileComp> _tilePool;
         private EcsPoolInject<SpawnByGameChipEvent> _spawnByGameChipEventPool;

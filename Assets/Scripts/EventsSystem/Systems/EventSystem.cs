@@ -22,7 +22,10 @@ namespace Client
             {
                 TileComp tileComp = _tilePool.Value.Get(entity);
                 
+                if(!_spawnByTileEventPool.Value.Has(entity))
                 _spawnByTileEventPool.Value.Add(entity);//TODO Эвент спавна тайла
+
+                if(!_spawnByGameChipEventPool.Value.Has(entity))
                 _spawnByGameChipEventPool.Value.Add(entity);//TODO эвент спавна игровоко айтима
 
                 Debug.Log($"EventSystem: Кликнули на тайл {tileComp.MB.Pos}");

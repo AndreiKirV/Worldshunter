@@ -14,14 +14,17 @@ public class TileMB : MonoBehaviour
     public int Entity;
 
     private EcsWorld _world;
+    EcsPool<Client.ClickTileEvent> _clickTileEventPool;
 
     public void SetWorld(EcsWorld world)
     {
         _world = world;
+        _clickTileEventPool = _world.GetPool<Client.ClickTileEvent>();
     }
 
     private void OnMouseDown()
     {
+        if(!_clickTileEventPool.Has(Entity))
         _world.GetPool<Client.ClickTileEvent>().Add(Entity);
     }
 }

@@ -18,8 +18,6 @@ namespace Client
 
             foreach (var entityChip in _gameChipFilter.Value)
             {
-                Debug.Log("есть MustFallComp");
-
                 ref GameChipComp gameChipComp = ref _gameChipCompPool.Value.Get(entityChip);
 
                 if (gameChipComp.MB.transform.localPosition.y > gameChipComp.ZeroPositionY)
@@ -28,11 +26,8 @@ namespace Client
                 }
                 else
                 {
-                    Debug.Log("убрал MustFallComp");
-
                     gameChipComp.MB.Mesh.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                     gameChipComp.MB.Transform.localPosition = new Vector3(0, gameChipComp.ZeroPositionY, 0);
-                    //gameChipComp.MB.BoxCollider.enabled = true;
                     _mustFallPool.Value.Del(entityChip);
                 }
             }

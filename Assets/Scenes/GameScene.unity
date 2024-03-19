@@ -811,11 +811,11 @@ MonoBehaviour:
     Playground: {fileID: 1069513154}
     MaxPosition: {x: 0, y: 0}
     MinPosition: {x: 0, y: 0}
-    TileStartPosY: 15
-    GameChipPosY: 15
+    TileStartPosY: 50
+    GameChipPosY: 50
     Tiles: []
   _gravity:
-    Scale: 175
+    Scale: 300
     IsOneByOne: 1
   _gameChipPref: {fileID: 3841644623797097962, guid: 98ce7da08f8510e4f9f02a720a6ce480, type: 3}
 --- !u!1 &1069513149
