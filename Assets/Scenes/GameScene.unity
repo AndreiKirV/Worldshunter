@@ -806,18 +806,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf3064cb0a04cd478a821af92aa03b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _map:
-    TilePref: {fileID: 6237665126161083904, guid: 1a15473782a3e2c46ade381cbd41a2a7, type: 3}
-    Playground: {fileID: 1069513154}
-    MaxPosition: {x: 0, y: 0}
-    MinPosition: {x: 0, y: 0}
-    TileStartPosY: 50
-    GameChipPosY: 50
-    Tiles: []
-  _gravity:
-    Scale: 300
-    IsOneByOne: 1
-  _gameChipPref: {fileID: 3841644623797097962, guid: 98ce7da08f8510e4f9f02a720a6ce480, type: 3}
+  _data:
+    Map:
+      TilePref: {fileID: 6237665126161083904, guid: 1a15473782a3e2c46ade381cbd41a2a7, type: 3}
+      Playground: {fileID: 1069513154}
+      MaxPosition: {x: 0, y: 0}
+      MinPosition: {x: 0, y: 0}
+      TileStartPosY: 50
+      GameChipPosY: 50
+      Tiles: []
+    Gravity:
+      Scale: 300
+      IsOneByOne: 1
+    GameChipPref: {fileID: 3841644623797097962, guid: 98ce7da08f8510e4f9f02a720a6ce480, type: 3}
+    MaxSpawnChip: 5
+    MaxTileIsOneByOne: 5
 --- !u!1 &1069513149
 GameObject:
   m_ObjectHideFlags: 0

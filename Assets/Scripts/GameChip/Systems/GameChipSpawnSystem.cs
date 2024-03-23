@@ -23,38 +23,37 @@ namespace Client
 
                 if (tileComp.GameChip == null)
                 {
-                    tileComp.GameChip = StartSpawn(tileComp.MB.Transform, _data.Value.GameChipPref);
-
                     ref GameChipComp gameChipComp = ref _gameChipCompPool.Value.Add(entity);
-                    gameChipComp.Level = 1;
-
-                    gameChipComp.ZeroPositionY = tileComp.GameChip.transform.localPosition.y;
                     
+                    tileComp.GameChip = StartSpawn(tileComp.MB.Transform, _data.Value.GameChipPref);
+                    gameChipComp.ZeroPositionY = tileComp.GameChip.transform.localPosition.y;
                     gameChipComp.MB = tileComp.GameChip;
 
+                    tileComp.GameChip.Transform.localPosition = new Vector3(0, _data.Value.Map.GameChipPosY, 0);
                     ref MustFallComp mustFallComp = ref _mustFallCompPool.Value.Add(entity);
                     mustFallComp.Transform = gameChipComp.MB.transform;
 
-                    tileComp.GameChip.Transform.localPosition = new Vector3(0, _data.Value.Map.GameChipPosY, 0);
+                    gameChipComp.Level = 1;
                 }
                 else
                 {
-                    tileComp.GameChip = StartSpawn(tileComp.MB.Transform, _data.Value.GameChipPref);
-
                     ref GameChipComp gameChipComp = ref _gameChipCompPool.Value.Get(entity);
 
-                    gameChipComp.ZeroPositionY = tileComp.GameChip.transform.localPosition.y + gameChipComp.Level;
+                    if (gameChipComp.Level < _data.Value.MaxSpawnChip)
+                    {
+                        tileComp.GameChip = StartSpawn(tileComp.MB.Transform, _data.Value.GameChipPref);
+                        gameChipComp.ZeroPositionY = tileComp.GameChip.transform.localPosition.y + gameChipComp.Level;
+                        gameChipComp.MB = tileComp.GameChip;
+
+                        tileComp.GameChip.Transform.localPosition = new Vector3(0, _data.Value.Map.GameChipPosY, 0);
+                        ref MustFallComp mustFallComp = ref _mustFallCompPool.Value.Add(entity);
+                        mustFallComp.Transform = gameChipComp.MB.transform;
+                    }
+
                     gameChipComp.Level++;
-
-                    gameChipComp.MB = tileComp.GameChip;
-
-                    ref MustFallComp mustFallComp = ref _mustFallCompPool.Value.Add(entity);
-                    mustFallComp.Transform = gameChipComp.MB.transform;
-
-                    tileComp.GameChip.Transform.localPosition = new Vector3(0, _data.Value.Map.GameChipPosY, 0);
+                    Debug.Log($"GameChipSpawnSystem: запросили спавн GameChip в {tileComp.MB.Pos} {gameChipComp.Level}");
                 }
 
-                Debug.Log($"GameChipSpawnSystem: запросили спавн GameChip в {tileComp.MB.Pos}");
                 _spawnByGameChipEventPool.Value.Del(entity);
             }
         }

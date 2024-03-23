@@ -15,13 +15,13 @@ namespace Client
         private EcsPoolInject<TileComp> _tilePool;
         private EcsPoolInject<MustFallComp> _mustFallPool;
         private EcsPoolInject<SpawnByGameChipEvent> _spawnByGameChipEventPool;
-
-        private List<TileMB> _tileIsFlying = new List<TileMB>();
+        private int _actuationCountIsOneByOne = 0;
 
         public void Run(IEcsSystems systems)
         {
             bool isProcessing = false;
             bool tileIsEnable = true;
+
 
             foreach (var entityTile in _tileFilter.Value)
             {
@@ -38,10 +38,10 @@ namespace Client
 
                 if (!isProcessing)
                 {
-                    if (_data.Value.Gravity.IsOneByOne)
+                    if (_data.Value.Gravity.IsOneByOne && _actuationCountIsOneByOne < _data.Value.MaxTileIsOneByOne)//TODO
                         isProcessing = true;
 
-                    TileComp tempTileComp = _tilePool.Value.Get(entityTile);
+                    ref TileComp tempTileComp = ref _tilePool.Value.Get(entityTile);
 
                     if (tempTileComp.MB.Transform.localPosition.y > 0)
                     {
@@ -52,9 +52,6 @@ namespace Client
                         tempTileComp.MB.Mesh.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                         tempTileComp.MB.Transform.localPosition = new Vector3(tempTileComp.MB.Transform.localPosition.x, 0, tempTileComp.MB.GameObject.transform.localPosition.z);
                         _mustFallPool.Value.Del(tempTileComp.MB.Entity);
-
-                        if (!_tileIsFlying.Contains(tempTileComp.MB))
-                            _tileIsFlying.Add(tempTileComp.MB);
 
                         if (tempTileComp.MB.Pos == Vector2.zero)
                         {
@@ -70,13 +67,24 @@ namespace Client
                                 tileComp.MB.BoxCollider.enabled = true;
                                 tileIsEnable = true;
                             }
+
+                            _actuationCountIsOneByOne++;
+                        }
+
+                        if (_data.Value.Gravity.IsOneByOne && _actuationCountIsOneByOne >= _data.Value.MaxTileIsOneByOne)//TODO
+                        {
+                            foreach (var entityInstalledTile in _tileInstalledFilter.Value)
+                            {
+                                ref TileComp tileComp = ref _tilePool.Value.Get(entityInstalledTile);
+                                tileComp.MB.BoxCollider.enabled = true;
+                                tileIsEnable = true;
+                            }
                         }
                     }
                 }
                 else
                     continue;
             }
-
         }
     }
 }

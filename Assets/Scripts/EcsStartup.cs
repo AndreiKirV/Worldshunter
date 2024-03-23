@@ -9,21 +9,13 @@ namespace Client
         EcsWorld _world;
         IEcsSystems _systems;
 
-        //внешка
-        [SerializeField] private Map _map;
-        [SerializeField] private Gravity _gravity;
-        [SerializeField] private GameChipMB _gameChipPref;
+        [SerializeField] private Data _data;
 
-        private Data _data;
+        //private Data _data;
 
         void Start()
         {
             _world = new EcsWorld();
-
-            _data = new Data();
-            _data.Map = _map;
-            _data.Gravity = _gravity;
-            _data.GameChipPref = _gameChipPref;
 
             _systems = new EcsSystems(_world);
             _systems
@@ -31,7 +23,6 @@ namespace Client
                 .Add(new TimerInitSystem())
                 .Add(new TimerSystem())
                 .Add(new TickSystem())//TODO для примера, убрать
-                                      //TODO Timer
 
                 //TODO Tile
                 .Add(new PlaygroundInitSystem())
