@@ -17,6 +17,8 @@ namespace Client
         private EcsPoolInject<SpawnByGameChipEvent> _spawnByGameChipEventPool;
         private int _actuationCountIsOneByOne = 0;
 
+        Dictionary<string, TileComp> _tiles = new Dictionary<string, TileComp>();
+
         public void Run(IEcsSystems systems)
         {
             bool isProcessing = false;
@@ -59,7 +61,9 @@ namespace Client
                                 _spawnByGameChipEventPool.Value.Add(entityTile);
                         }
 
-                        if (_tileFilter.Value.GetEntitiesCount() == 1 || !_data.Value.Gravity.IsOneByOne)//TODO когда последний тайл приземлился
+
+                        //TODO когда последний тайл приземлился
+                        if (_tileFilter.Value.GetEntitiesCount() == 1 || !_data.Value.Gravity.IsOneByOne)
                         {
                             foreach (var entityInstalledTile in _tileInstalledFilter.Value)
                             {
@@ -71,6 +75,8 @@ namespace Client
                             _actuationCountIsOneByOne++;
                         }
 
+
+                        //TODOкогда тайлы падают все вместе
                         if (_data.Value.Gravity.IsOneByOne && _actuationCountIsOneByOne >= _data.Value.MaxTileIsOneByOne)//TODO
                         {
                             foreach (var entityInstalledTile in _tileInstalledFilter.Value)
