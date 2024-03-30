@@ -10,6 +10,7 @@ namespace Client
         IEcsSystems _systems;
 
         [SerializeField] private Data _data;
+        [SerializeField] private Camera _camera;
 
         //private Data _data;
 
@@ -39,6 +40,10 @@ namespace Client
                 .Add(new EventSystem())
                 //TODO events
 
+
+                //TODO input
+                //0.Add(new InputSystem(_camera));
+                //TODO input
 
                 ;
             // register additional worlds here, for example:
