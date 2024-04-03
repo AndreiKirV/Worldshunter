@@ -14,7 +14,7 @@ namespace Client
         {
         }
 
-        public static T StartSpawn<T>(Transform transform, T pref) where T : Object
+        protected T StartSpawn<T>(Transform transform, T pref) where T : Object
         {
             T tempObject = Object.Instantiate<T>(pref, transform);
             return tempObject;

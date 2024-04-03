@@ -10,7 +10,6 @@ public class CameraController : MonoBehaviour
     public void Update()
     {
         //Input.GetKeyDown(KeyCode.Escape)
-        Debug.Log("Нажата клавиша: " + Input.inputString);
         if (!string.IsNullOrEmpty(Input.inputString))
             switch (Input.inputString)
             {

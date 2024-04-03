@@ -24,7 +24,7 @@ namespace Client
             {
                 for (int j = -1; j <= 1; j++)
                 {
-                    TileMB tempTile = SpawnSystem.StartSpawn<TileMB>(_playground.transform, _data.Value.Map.TilePref);
+                    TileMB tempTile = StartSpawn<TileMB>(_playground.transform, _data.Value.Map.TilePref);
                     tempTile.transform.localPosition = new Vector3(i, _data.Value.Map.TileStartPosY, j);
                     tempTile.name = $"{_data.Value.Map.TilePref.name} [{i}]:[{j}]";
                     _data.Value.Map.Tiles.Add(tempTile);
@@ -43,6 +43,12 @@ namespace Client
             {
                 item.SetWorld(_world.Value);
             }
+        }
+
+        private T StartSpawn<T>(Transform transform, T pref) where T : Object
+        {
+            T tempObject = Object.Instantiate<T>(pref, transform);
+            return tempObject;
         }
     }
 }

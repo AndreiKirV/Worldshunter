@@ -1,6 +1,8 @@
+using System.Diagnostics;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Client
 {

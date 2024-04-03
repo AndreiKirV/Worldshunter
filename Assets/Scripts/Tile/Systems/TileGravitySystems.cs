@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Client
 {
@@ -48,42 +50,48 @@ namespace Client
                     if (tempTileComp.MB.Transform.localPosition.y > 0)
                     {
                         tempTileComp.MB.Transform.localPosition = new Vector3(tempTileComp.MB.Transform.localPosition.x, tempTileComp.MB.Transform.localPosition.y - Time.deltaTime * _data.Value.Gravity.Scale, tempTileComp.MB.Transform.localPosition.z);
-                    }
-                    else
-                    {
-                        tempTileComp.MB.Mesh.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-                        tempTileComp.MB.Transform.localPosition = new Vector3(tempTileComp.MB.Transform.localPosition.x, 0, tempTileComp.MB.GameObject.transform.localPosition.z);
-                        _mustFallPool.Value.Del(tempTileComp.MB.Entity);
 
-                        if (tempTileComp.MB.Pos == Vector2.zero)
+
+                        /* Stopwatch sw = new Stopwatch();
+                        sw.Start();
+                        sw.Stop();
+                        Debug.Log($"sw.Elapsed {sw.Elapsed}");
+                        Debug.Log($"sw.ElapsedMilliseconds {sw.ElapsedMilliseconds}"); */
+
+                        if (tempTileComp.MB.Transform.localPosition.y - Time.deltaTime * _data.Value.Gravity.Scale < 0)
                         {
-                            if (!_spawnByGameChipEventPool.Value.Has(entityTile))
-                                _spawnByGameChipEventPool.Value.Add(entityTile);
-                        }
+                            tempTileComp.MB.Mesh.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                            tempTileComp.MB.Transform.localPosition = new Vector3(tempTileComp.MB.Transform.localPosition.x, 0, tempTileComp.MB.GameObject.transform.localPosition.z);
+                            _mustFallPool.Value.Del(tempTileComp.MB.Entity);
 
-
-                        //TODO когда последний тайл приземлился
-                        if (_tileFilter.Value.GetEntitiesCount() == 1 || !_data.Value.Gravity.IsOneByOne)
-                        {
-                            foreach (var entityInstalledTile in _tileInstalledFilter.Value)
+                            if (tempTileComp.MB.Pos == Vector2.zero)
                             {
-                                ref TileComp tileComp = ref _tilePool.Value.Get(entityInstalledTile);
-                                tileComp.MB.BoxCollider.enabled = true;
-                                tileIsEnable = true;
+                                if (!_spawnByGameChipEventPool.Value.Has(entityTile))
+                                    _spawnByGameChipEventPool.Value.Add(entityTile);
                             }
 
-                            _actuationCountIsOneByOne++;
-                        }
-
-
-                        //TODOкогда тайлы падают все вместе
-                        if (_data.Value.Gravity.IsOneByOne && _actuationCountIsOneByOne >= _data.Value.MaxTileIsOneByOne)//TODO
-                        {
-                            foreach (var entityInstalledTile in _tileInstalledFilter.Value)
+                            //TODO когда последний тайл приземлился
+                            if (_tileFilter.Value.GetEntitiesCount() == 1 || !_data.Value.Gravity.IsOneByOne)
                             {
-                                ref TileComp tileComp = ref _tilePool.Value.Get(entityInstalledTile);
-                                tileComp.MB.BoxCollider.enabled = true;
-                                tileIsEnable = true;
+                                foreach (var entityInstalledTile in _tileInstalledFilter.Value)
+                                {
+                                    ref TileComp tileComp = ref _tilePool.Value.Get(entityInstalledTile);
+                                    tileComp.MB.BoxCollider.enabled = true;
+                                    tileIsEnable = true;
+                                }
+
+                                _actuationCountIsOneByOne++;
+                            }
+
+                            //TODOкогда тайлы падают все вместе
+                            if (_data.Value.Gravity.IsOneByOne && _actuationCountIsOneByOne >= _data.Value.MaxTileIsOneByOne)//TODO
+                            {
+                                foreach (var entityInstalledTile in _tileInstalledFilter.Value)
+                                {
+                                    ref TileComp tileComp = ref _tilePool.Value.Get(entityInstalledTile);
+                                    tileComp.MB.BoxCollider.enabled = true;
+                                    tileIsEnable = true;
+                                }
                             }
                         }
                     }
