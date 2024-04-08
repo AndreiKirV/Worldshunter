@@ -14,7 +14,7 @@ public class TileMB : MonoBehaviour
     public int Entity;
 
     private EcsWorld _world;
-    EcsPool<Client.ClickTileEvent> _clickTileEventPool;
+    private EcsPool<Client.ClickTileEvent> _clickTileEventPool;
 
     public void SetWorld(EcsWorld world)
     {
