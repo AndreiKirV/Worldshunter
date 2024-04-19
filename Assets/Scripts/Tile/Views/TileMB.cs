@@ -33,6 +33,6 @@ public class TileMB : MonoBehaviour
         if (!_clickTileEventPool.Has(Entity))
             _world.GetPool<Client.ClickTileEvent>().Add(Entity);
 
-        Debug.Log($"Кликнули по TileMB {this.gameObject.name}");
+        //Debug.Log($"Кликнули по TileMB {this.gameObject.name}");
     }
 }

@@ -20,7 +20,7 @@ namespace Client
                 TileComp tileComp = _tilePool.Value.Get(entitySpawnByTile);
                 SetNewTiles(tileComp.MB);
 
-                Debug.Log($"Запросили спавн тайла с {tileComp.MB.Pos}");
+                //Debug.Log($"Запросили спавн тайла с {tileComp.MB.Pos}");
                 _spawnByTileFilter.Pools.Inc1.Del(entitySpawnByTile);
             }
         }

@@ -60,7 +60,7 @@ namespace Client
 
             _systems.Init();
 
-           // StartCoroutine(MyCoroutine(PreStart, () => _data.Gravity.Scale = 300, 60, 0.1f));
+            StartCoroutine(MyCoroutine(PreStart, () => _data.Gravity.Scale = 300, 60, 0.1f));
         }
 
         void Update()
@@ -85,7 +85,7 @@ namespace Client
 
         private void PreStart()
         {
-            _data.Gravity.Scale = 9999;
+            _data.Gravity.Scale = 99;
             _data.Gravity.IsOneByOne = false;
             _data.Map.Tiles.Find(item => item.Pos == _data.Map.MinPosition).ForceClick();
         }

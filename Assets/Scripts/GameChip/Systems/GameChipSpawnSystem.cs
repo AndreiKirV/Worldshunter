@@ -51,7 +51,7 @@ namespace Client
                     }
 
                     gameChipComp.Level++;
-                    Debug.Log($"GameChipSpawnSystem: запросили спавн GameChip в {tileComp.MB.Pos} {gameChipComp.Level}");
+                    //Debug.Log($"GameChipSpawnSystem: запросили спавн GameChip в {tileComp.MB.Pos} {gameChipComp.Level}");
                 }
 
                 _spawnByGameChipEventPool.Value.Del(entity);

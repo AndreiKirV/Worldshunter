@@ -28,7 +28,7 @@ namespace Client
                 if(!_spawnByGameChipEventPool.Value.Has(entity))
                 _spawnByGameChipEventPool.Value.Add(entity);//TODO эвент спавна игровоко айтима
 
-                Debug.Log($"EventSystem: Кликнули на тайл {tileComp.MB.Pos}");
+                //Debug.Log($"EventSystem: Кликнули на тайл {tileComp.MB.Pos}");
                 //Конец эвента
                _clickTileEventPool.Value.Del(entity);
             }

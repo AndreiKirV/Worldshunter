@@ -16,12 +16,12 @@ public class CameraController : MonoBehaviour
                 case "w":
                 case "ц":
                     _duration = new Vector2(_duration.x, 1);
-                    Debug.Log("nazhata w");
+                    //Debug.Log("nazhata w");
                     break;
                 case "s":
                 case "ы":
                     _duration = new Vector2(_duration.x, -1);
-                    Debug.Log("nazhata s");
+                    //Debug.Log("nazhata s");
                     break;
                 case "a":
                 case "ф":
@@ -33,19 +33,19 @@ public class CameraController : MonoBehaviour
                     break;
                 // Добавьте другие клавиши, которые вам нужны
                 default:
-                    Debug.Log("Нажата другая клавиша: " + Input.inputString);
+                    //Debug.Log("Нажата другая клавиша: " + Input.inputString);
                     break;
             }
 
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
         {
-            Debug.Log("otzh");
+            //Debug.Log("otzh");
             _duration = new Vector2(_duration.x, 0);
         }
 
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
         {
-            Debug.Log("otzh");
+            //Debug.Log("otzh");
             _duration = new Vector2(0, _duration.y);
         }
 
