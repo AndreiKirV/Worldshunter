@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
@@ -27,8 +29,8 @@ namespace Client
 
                 //TODO Tile
                 .Add(new PlaygroundInitSystem())
-                .Add(new TileGravitySystems())
                 .Add(new TileSpawnSystem())
+                .Add(new TileGravitySystems())
                 //TODO Tile
 
                 //TODO GameChip
@@ -57,6 +59,8 @@ namespace Client
             _systems.Inject(_data);
 
             _systems.Init();
+
+           // StartCoroutine(MyCoroutine(PreStart, () => _data.Gravity.Scale = 300, 60, 0.1f));
         }
 
         void Update()
@@ -77,6 +81,24 @@ namespace Client
                 _world.Destroy();
                 _world = null;
             }
+        }
+
+        private void PreStart()
+        {
+            _data.Gravity.Scale = 9999;
+            _data.Gravity.IsOneByOne = false;
+            _data.Map.Tiles.Find(item => item.Pos == _data.Map.MinPosition).ForceClick();
+        }
+
+        IEnumerator MyCoroutine(Action action, Action enAction, int value, float delay)
+        {
+            for (int i = 0; i < value; i++)
+            {
+                yield return new WaitForSeconds(delay);
+                action?.Invoke();
+            }
+
+            enAction?.Invoke();
         }
     }
 }

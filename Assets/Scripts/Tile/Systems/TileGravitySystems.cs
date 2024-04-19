@@ -29,17 +29,19 @@ namespace Client
 
             foreach (var entityTile in _tileFilter.Value)
             {
+                //узкое место
                 if (tileIsEnable)
                 {
                     foreach (var entityInstalledTile in _tileInstalledFilter.Value)
                     {
                         ref TileComp tileComp = ref _tilePool.Value.Get(entityInstalledTile);
                         tileComp.MB.BoxCollider.enabled = false;
+                        Debug.Log("Strannaya huinya");
                     }
 
                     tileIsEnable = false;
                 }
-
+ 
                 if (!isProcessing)
                 {
                     if (_data.Value.Gravity.IsOneByOne && _actuationCountIsOneByOne < _data.Value.MaxTileIsOneByOne)//TODO
@@ -49,16 +51,17 @@ namespace Client
 
                     if (tempTileComp.MB.Transform.localPosition.y > 0)
                     {
-                        tempTileComp.MB.Transform.localPosition = new Vector3(tempTileComp.MB.Transform.localPosition.x, tempTileComp.MB.Transform.localPosition.y - Time.deltaTime * _data.Value.Gravity.Scale, tempTileComp.MB.Transform.localPosition.z);
-
+                        float targetPosY = tempTileComp.MB.Transform.localPosition.y - Time.deltaTime * _data.Value.Gravity.Scale;
+                        tempTileComp.MB.Transform.localPosition = new Vector3(tempTileComp.MB.Transform.localPosition.x, targetPosY, tempTileComp.MB.Transform.localPosition.z);
 
                         /* Stopwatch sw = new Stopwatch();
                         sw.Start();
                         sw.Stop();
                         Debug.Log($"sw.Elapsed {sw.Elapsed}");
                         Debug.Log($"sw.ElapsedMilliseconds {sw.ElapsedMilliseconds}"); */
+                        
 
-                        if (tempTileComp.MB.Transform.localPosition.y - Time.deltaTime * _data.Value.Gravity.Scale < 0)
+                        if (targetPosY < 0)//узкое место
                         {
                             tempTileComp.MB.Mesh.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                             tempTileComp.MB.Transform.localPosition = new Vector3(tempTileComp.MB.Transform.localPosition.x, 0, tempTileComp.MB.GameObject.transform.localPosition.z);
@@ -70,8 +73,18 @@ namespace Client
                                     _spawnByGameChipEventPool.Value.Add(entityTile);
                             }
 
-                            //TODO когда последний тайл приземлился
-                            if (_tileFilter.Value.GetEntitiesCount() == 1 || !_data.Value.Gravity.IsOneByOne)
+                            //TODOкогда тайлы падают все вместе, отрабатывает при приземелении
+                            if (_data.Value.Gravity.IsOneByOne && _actuationCountIsOneByOne >= _data.Value.MaxTileIsOneByOne)//TODO
+                            {
+                                foreach (var entityInstalledTile in _tileInstalledFilter.Value)
+                                {
+                                    ref TileComp tileComp = ref _tilePool.Value.Get(entityInstalledTile);
+                                    tileComp.MB.BoxCollider.enabled = true;
+                                    tileIsEnable = true;
+                                }
+                            }
+                            //TODO когда последний тайл приземлился, если летят по одному
+                            else if (_tileFilter.Value.GetEntitiesCount() == 1 || !_data.Value.Gravity.IsOneByOne)
                             {
                                 foreach (var entityInstalledTile in _tileInstalledFilter.Value)
                                 {
@@ -81,17 +94,6 @@ namespace Client
                                 }
 
                                 _actuationCountIsOneByOne++;
-                            }
-
-                            //TODOкогда тайлы падают все вместе
-                            if (_data.Value.Gravity.IsOneByOne && _actuationCountIsOneByOne >= _data.Value.MaxTileIsOneByOne)//TODO
-                            {
-                                foreach (var entityInstalledTile in _tileInstalledFilter.Value)
-                                {
-                                    ref TileComp tileComp = ref _tilePool.Value.Get(entityInstalledTile);
-                                    tileComp.MB.BoxCollider.enabled = true;
-                                    tileIsEnable = true;
-                                }
                             }
                         }
                     }

@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class TileMB : MonoBehaviour
 {
-    [SerializeField] public MeshRenderer Mesh;
-    [SerializeField] public BoxCollider BoxCollider;
+    public MeshRenderer Mesh;
+    public BoxCollider BoxCollider;
+    public Transform Transform;
+    public int Entity;
     public Vector2 Pos => new Vector2(transform.localPosition.x, transform.localPosition.z);
     public GameObject GameObject => this.gameObject;
-    public Transform Transform => this.transform;
-    public int Entity;
 
     private EcsWorld _world;
     private EcsPool<Client.ClickTileEvent> _clickTileEventPool;
@@ -20,6 +20,12 @@ public class TileMB : MonoBehaviour
     {
         _world = world;
         _clickTileEventPool = _world.GetPool<Client.ClickTileEvent>();
+    }
+
+    public void ForceClick()
+    {
+        if (!_clickTileEventPool.Has(Entity))
+            _world.GetPool<Client.ClickTileEvent>().Add(Entity);
     }
 
     private void OnMouseDown()

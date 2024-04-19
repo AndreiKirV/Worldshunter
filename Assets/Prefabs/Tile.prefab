@@ -120,4 +120,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mesh: {fileID: 1744395659013680561}
   BoxCollider: {fileID: 798693527865454909}
+  Transform: {fileID: 4322923324263931923}
   Entity: 0

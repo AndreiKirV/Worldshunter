@@ -14,17 +14,21 @@ public class CameraController : MonoBehaviour
             switch (Input.inputString)
             {
                 case "w":
+                case "ц":
                     _duration = new Vector2(_duration.x, 1);
                     Debug.Log("nazhata w");
                     break;
                 case "s":
+                case "ы":
                     _duration = new Vector2(_duration.x, -1);
                     Debug.Log("nazhata s");
                     break;
                 case "a":
+                case "ф":
                     _duration = new Vector2(-1, _duration.y);
                     break;
                 case "d":
+                case "в":
                     _duration = new Vector2(1, _duration.y);
                     break;
                 // Добавьте другие клавиши, которые вам нужны
