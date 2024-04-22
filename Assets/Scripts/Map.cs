@@ -16,7 +16,7 @@ namespace Client
         public Vector2 MinPosition;
 
         public float TileStartPosY;
-        public float GameChipPosY;
+        public float GameChipStartPosY;
 
         public List<TileMB> Tiles = new List<TileMB>();
 

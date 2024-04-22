@@ -12,12 +12,13 @@ namespace Client
         IEcsSystems _systems;
 
         [SerializeField] private Data _data;
-        [SerializeField] private Camera _camera;
 
         //private Data _data;
 
         void Start()
         {
+            PreStart();
+
             _world = new EcsWorld();
 
             _systems = new EcsSystems(_world);
@@ -60,7 +61,8 @@ namespace Client
 
             _systems.Init();
 
-            StartCoroutine(MyCoroutine(PreStart, () => _data.Gravity.Scale = 300, 60, 0.1f));
+            //PostStart();
+            //StartCoroutine(DelayCoroutine(PostStart, () => _data.Gravity.Scale = 300, 60, 0.1f));
         }
 
         void Update()
@@ -85,12 +87,18 @@ namespace Client
 
         private void PreStart()
         {
-            _data.Gravity.Scale = 99;
+            _data.Map.TileStartPosY = MathF.Abs(_data.Canvas.transform.position.z - _data.Map.Playground.transform.position.z) - 1;
+            _data.Map.GameChipStartPosY = MathF.Abs(_data.Canvas.transform.position.z - _data.Map.Playground.transform.position.z) - 1;
+        }
+
+        private void PostStart()
+        {
+            _data.Gravity.Scale = 300;
             _data.Gravity.IsOneByOne = false;
             _data.Map.Tiles.Find(item => item.Pos == _data.Map.MinPosition).ForceClick();
         }
 
-        IEnumerator MyCoroutine(Action action, Action enAction, int value, float delay)
+        IEnumerator DelayCoroutine(Action action, Action endAction, int value, float delay)
         {
             for (int i = 0; i < value; i++)
             {
@@ -98,7 +106,7 @@ namespace Client
                 action?.Invoke();
             }
 
-            enAction?.Invoke();
+            endAction?.Invoke();
         }
     }
 }

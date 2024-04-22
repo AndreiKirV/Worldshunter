@@ -26,7 +26,7 @@ namespace Client
                 }
                 else
                 {
-                    gameChipComp.MB.Mesh.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                    //gameChipComp.MB.Mesh.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                     gameChipComp.MB.Transform.localPosition = new Vector3(0, gameChipComp.ZeroPositionY, 0);
                     _mustFallPool.Value.Del(entityChip);
                 }

@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour
                     break;
                 // Добавьте другие клавиши, которые вам нужны
                 default:
-                    //Debug.Log("Нажата другая клавиша: " + Input.inputString);
+                    Debug.Log("Нажата другая клавиша: " + Input.inputString);
                     break;
             }
 

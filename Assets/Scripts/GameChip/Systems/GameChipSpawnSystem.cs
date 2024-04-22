@@ -29,7 +29,7 @@ namespace Client
                     gameChipComp.ZeroPositionY = tileComp.GameChip.transform.localPosition.y;
                     gameChipComp.MB = tileComp.GameChip;
 
-                    tileComp.GameChip.Transform.localPosition = new Vector3(0, _data.Value.Map.GameChipPosY, 0);
+                    tileComp.GameChip.Transform.localPosition = new Vector3(0, _data.Value.Map.GameChipStartPosY, 0);
                     ref MustFallComp mustFallComp = ref _mustFallCompPool.Value.Add(entity);
                     mustFallComp.Transform = gameChipComp.MB.transform;
 
@@ -45,7 +45,7 @@ namespace Client
                         gameChipComp.ZeroPositionY = tileComp.GameChip.transform.localPosition.y + gameChipComp.Level;
                         gameChipComp.MB = tileComp.GameChip;
 
-                        tileComp.GameChip.Transform.localPosition = new Vector3(0, _data.Value.Map.GameChipPosY, 0);
+                        tileComp.GameChip.Transform.localPosition = new Vector3(0, _data.Value.Map.GameChipStartPosY, 0);
                         ref MustFallComp mustFallComp = ref _mustFallCompPool.Value.Add(entity);
                         mustFallComp.Transform = gameChipComp.MB.transform;
                     }

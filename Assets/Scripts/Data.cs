@@ -12,6 +12,8 @@ public class Data
 {
     public Map Map = new Map();
     public Gravity Gravity = new Gravity();
+    public Camera Camera;
+    public GameObject Canvas;
     public GameChipMB GameChipPref;
     public int MaxSpawnChip;
     public int MaxTileIsOneByOne;

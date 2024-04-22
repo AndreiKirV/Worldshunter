@@ -513,7 +513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.8999996, y: -1.7000008}
+  m_AnchoredPosition: {x: 1.9000015, y: -1.7000008}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &357666073
@@ -1758,10 +1758,10 @@ RectTransform:
   - {fileID: 864632577}
   m_Father: {fileID: 1161097339}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.97137356}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.55999756}
-  m_SizeDelta: {x: -0.00012207, y: -0.19000244}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.030747024}
+  m_AnchoredPosition: {x: 0, y: 0.45999908}
+  m_SizeDelta: {x: -0.00012207, y: -0.38999915}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &824542362
 MonoBehaviour:
@@ -2182,7 +2182,6 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194230}
-  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2264,18 +2263,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50c984fea408a4b46a60a2966c18d336, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2338,16 +2325,17 @@ MonoBehaviour:
       Playground: {fileID: 1069513154}
       MaxPosition: {x: 0, y: 0}
       MinPosition: {x: 0, y: 0}
-      TileStartPosY: 50
-      GameChipPosY: 50
+      TileStartPosY: 25
+      GameChipStartPosY: 25
       Tiles: []
     Gravity:
       Scale: 300
       IsOneByOne: 1
+    Camera: {fileID: 963194227}
+    Canvas: {fileID: 1157888185}
     GameChipPref: {fileID: 3841644623797097962, guid: 98ce7da08f8510e4f9f02a720a6ce480, type: 3}
     MaxSpawnChip: 5
-    MaxTileIsOneByOne: 5
-  _camera: {fileID: 963194227}
+    MaxTileIsOneByOne: 7
 --- !u!1 &1061136802
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,6 +2619,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121146324}
   m_CullTransparentMesh: 1
+--- !u!1 &1157888185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7900390308534317536, guid: 2365523840bbad94e93ea1c16c26b3c0, type: 3}
+  m_PrefabInstance: {fileID: 3049686802510377972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1159039909
 GameObject:
   m_ObjectHideFlags: 0
@@ -3104,7 +3097,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.90700006, y: 0.9588269}
   m_AnchorMax: {x: 0.9324792, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.5999985}
+  m_AnchoredPosition: {x: 0, y: -0.6000061}
   m_SizeDelta: {x: 0, y: 61.399982}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1447699319
@@ -3647,7 +3640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.93500006, y: 0.90400004}
   m_AnchorMax: {x: 0.966, y: 1}
-  m_AnchoredPosition: {x: 0.23486328, y: 0}
+  m_AnchoredPosition: {x: -0.9000244, y: 3.699997}
   m_SizeDelta: {x: -0.01, y: 46}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1672248225
@@ -4272,7 +4265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.21441168, y: 0.72900003}
   m_AnchorMax: {x: 0.78558826, y: 1}
-  m_AnchoredPosition: {x: 0.0000019073486, y: 7.375}
+  m_AnchoredPosition: {x: 0.0000038146973, y: 7.375}
   m_SizeDelta: {x: 0, y: 14.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1964448919
