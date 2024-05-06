@@ -8,8 +8,8 @@ namespace Client
 {
     sealed class EcsStartup : MonoBehaviour
     {
-        EcsWorld _world;
-        IEcsSystems _systems;
+        private EcsWorld _world;
+        private IEcsSystems _systems;
 
         [SerializeField] private Data _data;
 
@@ -89,6 +89,14 @@ namespace Client
         {
             _data.Map.TileStartPosY = MathF.Abs(_data.Canvas.transform.position.z - _data.Map.Playground.transform.position.z) - 1;
             _data.Map.GameChipStartPosY = MathF.Abs(_data.Canvas.transform.position.z - _data.Map.Playground.transform.position.z) - 1;
+
+            //инициализирую ui элементы, чтобы не тыкалось мимо ui
+            UIEventer[] eventers = FindObjectsOfType<UIEventer>();
+
+            foreach (var item in eventers)
+            {
+                item.SetData(_data);
+            }
         }
 
         private void PostStart()

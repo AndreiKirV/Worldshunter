@@ -16,10 +16,13 @@ public class TileMB : MonoBehaviour
     private EcsWorld _world;
     private EcsPool<Client.ClickTileEvent> _clickTileEventPool;
 
+    private Data _data;
+
     public void SetWorld(EcsWorld world)
     {
         _world = world;
         _clickTileEventPool = _world.GetPool<Client.ClickTileEvent>();
+        _data = Data.GetInstance();
     }
 
     public void ForceClick()
@@ -30,7 +33,7 @@ public class TileMB : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!_clickTileEventPool.Has(Entity))
+        if (!_clickTileEventPool.Has(Entity) && _data.IsUiFree)
             _world.GetPool<Client.ClickTileEvent>().Add(Entity);
 
         Debug.Log($"Кликнули по TileMB {this.gameObject.name}");

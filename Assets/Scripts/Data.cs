@@ -17,22 +17,19 @@ public class Data
     public GameChipMB GameChipPref;
     public int MaxSpawnChip;
     public int MaxTileIsOneByOne;
+    public bool IsUiFree = true;
 
     public Data()
     {
+        instance = this;
     }
-    //пока синглтон не нужен, может вдруг 
-    /* private static Data instance;
+    
+    private static Data instance;
 
     public static Data GetInstance()
     {
-        if (instance == null)
-            instance = new Data();
+        instance ??= new Data();
+
         return instance;
     }
-
-    private Data()
-    {
-
-    } */
 }
