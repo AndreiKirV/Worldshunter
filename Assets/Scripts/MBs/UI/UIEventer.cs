@@ -7,7 +7,7 @@ public class UIEventer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 {
     private Data _data;
 
-    public void SetData(Data data)
+    public void SetData()
     {
         _data = Data.GetInstance();
     }

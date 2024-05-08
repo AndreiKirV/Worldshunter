@@ -95,7 +95,7 @@ namespace Client
 
             foreach (var item in eventers)
             {
-                item.SetData(_data);
+                item.SetData();
             }
         }
 
