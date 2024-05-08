@@ -16,6 +16,7 @@ public class CardMB : MonoBehaviour
         new Element("Attack"),
         new Element("Lable"),
         new Element("Description"),
+        new Element("Special"),
         new Element("Portrait")
     };
 
