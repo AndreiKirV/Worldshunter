@@ -12,9 +12,17 @@ public class Data
 {
     public Map Map = new Map();
     public Gravity Gravity = new Gravity();
+    //скомпоновать, когда придет время
     public Camera Camera;
     public GameObject Canvas;
+
     public GameChipMB GameChipPref;
+
+    public Transform CardTemporaryParentTransform;
+    public Transform CardsContentTransform;
+    public CardMB CardMBPref;
+    public GameObject View;
+
     public int MaxSpawnChip;
     public int MaxTileIsOneByOne;
     public bool IsUiFree = true;
@@ -29,7 +37,6 @@ public class Data
     public static Data GetInstance()
     {
         instance ??= new Data();
-
         return instance;
     }
 }

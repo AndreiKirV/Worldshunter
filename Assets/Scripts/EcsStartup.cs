@@ -87,16 +87,26 @@ namespace Client
 
         private void PreStart()
         {
+            //определил дальность появления тайлов и геймштук в мире
             _data.Map.TileStartPosY = MathF.Abs(_data.Canvas.transform.position.z - _data.Map.Playground.transform.position.z) - 1;
             _data.Map.GameChipStartPosY = MathF.Abs(_data.Canvas.transform.position.z - _data.Map.Playground.transform.position.z) - 1;
+            //определил дальность появления тайлов и геймштук в мире
 
             //инициализирую ui элементы, чтобы не тыкалось мимо ui
             UIEventer[] eventers = FindObjectsOfType<UIEventer>();
-
             foreach (var item in eventers)
             {
                 item.SetData();
             }
+            //инициализирую ui элементы, чтобы не тыкалось мимо ui
+
+            //создаю стартовые карты
+            for (int i = 0; i < 12; i++)
+            {
+                CardMB cardMB = Instantiate(_data.CardMBPref, _data.CardsContentTransform);
+                cardMB.TemporaryParentTransform = _data.CardTemporaryParentTransform;
+            }
+            //создаю стартовые карты
         }
 
         private void PostStart()
