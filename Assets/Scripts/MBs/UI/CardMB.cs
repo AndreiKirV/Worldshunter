@@ -63,42 +63,6 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             ref CardHoverComp cardComp = ref _world.GetPool<CardHoverComp>().Add(entity);
             cardComp.MB = this;
         }
-
-        /* transform.parent = TemporaryParentTransform;
-        RectTransform.sizeDelta = new Vector2(300, 400);
-        RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x, 0); */
-        /*
-        if (IsPointerEnter)
-        {
-            Debug.Log($"Enter {this.name}");
-            _view = Instantiate(this, transform.position, Quaternion.identity, TemporaryParentTransform);
-            _view.IsPointerEnter = false;
-            _view.SetActionPointerExit(() => Destroy(_view.gameObject));
-            _view.RectTransform.sizeDelta = new Vector2(300, 400);
-            _view.RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x, _view.RectTransform.sizeDelta.y / 2);
-
-            if(Data.GetInstance().View == null)
-            {
-                Data.GetInstance().View = _view.gameObject;
-            }
-            else
-            {
-                Destroy(Data.GetInstance().View);
-                Data.GetInstance().View = _view.gameObject;
-            }
-
-            if(_view.RectTransform.anchoredPosition.x < _view.RectTransform.sizeDelta.x)
-            {
-                _view.RectTransform.anchoredPosition = new Vector2(_view.RectTransform.sizeDelta.x / 2, _view.RectTransform.anchoredPosition.y);
-            }
-            else if(_view.RectTransform.anchoredPosition.x > Screen.width - _view.RectTransform.sizeDelta.x)
-            {
-                _view.RectTransform.anchoredPosition = new Vector2(Screen.width - _view.RectTransform.sizeDelta.x, _view.RectTransform.anchoredPosition.y);
-            }
-        }
-        */
-
-
     }
 
     public void OnPointerExit(PointerEventData eventData)

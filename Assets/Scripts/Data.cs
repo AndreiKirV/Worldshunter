@@ -21,7 +21,6 @@ public class Data
     public Transform CardTemporaryParentTransform;
     public Transform CardsContentTransform;
     public CardMB CardMBPref;
-    public GameObject View;
 
     public int MaxSpawnChip;
     public int MaxTileIsOneByOne;

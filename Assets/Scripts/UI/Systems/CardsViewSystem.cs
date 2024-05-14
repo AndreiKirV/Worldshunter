@@ -1,6 +1,7 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 namespace Client
 {
@@ -18,22 +19,15 @@ namespace Client
             foreach (var entity in _cardHoverFilter.Value)
             {
                 ref CardHoverComp comp = ref _cardHoverPool.Value.Get(entity);
-                
+
+                if (_currentView != null)
+                    MonoBehaviour.Destroy(_currentView.gameObject);
+
                 _currentView = SpawnSystem.StartSpawn(comp.MB.TemporaryParentTransform, comp.MB, comp.MB.transform.position);
                 _currentView.IsPointerEnter = false;
                 _currentView.SetActionPointerExit(() => MonoBehaviour.Destroy(_currentView.gameObject));
                 _currentView.RectTransform.sizeDelta = new Vector2(300, 400);
                 _currentView.RectTransform.anchoredPosition = new Vector2(comp.MB.RectTransform.anchoredPosition.x, _currentView.RectTransform.sizeDelta.y / 2);
-
-                if (Data.GetInstance().View == null)
-                {
-                    Data.GetInstance().View = _currentView.gameObject;
-                }
-                else
-                {
-                    MonoBehaviour.Destroy(Data.GetInstance().View);
-                    Data.GetInstance().View = _currentView.gameObject;
-                }
 
                 if (_currentView.RectTransform.anchoredPosition.x < _currentView.RectTransform.sizeDelta.x)
                 {
@@ -43,7 +37,7 @@ namespace Client
                 {
                     _currentView.RectTransform.anchoredPosition = new Vector2(Screen.width - _currentView.RectTransform.sizeDelta.x, _currentView.RectTransform.anchoredPosition.y);
                 }
-                
+
                 _cardHoverPool.Value.Del(entity);
             }
         }
