@@ -2261,6 +2261,7 @@ MonoBehaviour:
     CardTemporaryParentTransform: {fileID: 1161097339}
     CardsContentTransform: {fileID: 1159039910}
     CardMBPref: {fileID: 6343278324498046699, guid: 7e0e4d300d49852479bf28e28c4797ad, type: 3}
+    View: {fileID: 0}
     MaxSpawnChip: 5
     MaxTileIsOneByOne: 7
     IsUiFree: 1
@@ -3651,7 +3652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.93500006, y: 0.90400004}
   m_AnchorMax: {x: 0.966, y: 1}
-  m_AnchoredPosition: {x: 0.15484619, y: 0}
+  m_AnchoredPosition: {x: 0.15478516, y: 0}
   m_SizeDelta: {x: 0.30977, y: 49.44}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1672248225

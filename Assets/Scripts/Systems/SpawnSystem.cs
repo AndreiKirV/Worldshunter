@@ -19,5 +19,11 @@ namespace Client
             T tempObject = Object.Instantiate<T>(pref, transform);
             return tempObject;
         }
+
+        public static T StartSpawn<T>(Transform transform, T pref, Vector3 pos) where T : Object
+        {
+            T tempObject = Object.Instantiate<T>(pref, pos, Quaternion.identity, transform);
+            return tempObject;
+        }
     }
 }

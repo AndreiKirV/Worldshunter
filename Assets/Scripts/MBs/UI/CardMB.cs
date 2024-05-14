@@ -1,3 +1,5 @@
+using Client;
+using Leopotam.EcsLite;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,9 +26,12 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public RectTransform RectTransform;
     public Transform TemporaryParentTransform;
-    private Action _actionPointerExit;
-    private CardMB _view;
     public bool IsPointerEnter = true;
+
+    private EcsWorld _world;
+
+    private Action _actionPointerExit;
+
     public List<Element> Elements = new List<Element>()
     {
         new Element("Cost"),
@@ -45,11 +50,24 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _actionPointerExit += action;
     }
 
+    public void SetWorld(EcsWorld world) 
+    {
+        _world = world;    
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (_world != null)
+        {
+            int entity = _world.NewEntity();
+            ref CardHoverComp cardComp = ref _world.GetPool<CardHoverComp>().Add(entity);
+            cardComp.MB = this;
+        }
+
         /* transform.parent = TemporaryParentTransform;
         RectTransform.sizeDelta = new Vector2(300, 400);
         RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x, 0); */
+        /*
         if (IsPointerEnter)
         {
             Debug.Log($"Enter {this.name}");
@@ -78,6 +96,9 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 _view.RectTransform.anchoredPosition = new Vector2(Screen.width - _view.RectTransform.sizeDelta.x, _view.RectTransform.anchoredPosition.y);
             }
         }
+        */
+
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -87,6 +108,5 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         //Destroy(_view.gameObject);
         Debug.Log($"Exit {this.name}");
         _actionPointerExit?.Invoke();
-
     }
 }

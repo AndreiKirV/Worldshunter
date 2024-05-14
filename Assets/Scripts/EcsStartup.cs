@@ -17,9 +17,9 @@ namespace Client
 
         void Start()
         {
-            PreStart();
 
             _world = new EcsWorld();
+            PreStart();
 
             _systems = new EcsSystems(_world);
             _systems
@@ -41,6 +41,7 @@ namespace Client
 
                 //TODO events
                 .Add(new EventSystem())
+                .Add(new CardsViewSystem())
                 //TODO events
 
 
@@ -105,6 +106,7 @@ namespace Client
             {
                 CardMB cardMB = Instantiate(_data.CardMBPref, _data.CardsContentTransform);
                 cardMB.TemporaryParentTransform = _data.CardTemporaryParentTransform;
+                cardMB.SetWorld(_world);
             }
             //создаю стартовые карты
         }
