@@ -1064,7 +1064,7 @@ GameObject:
   - component: {fileID: 9032560761612207608}
   - component: {fileID: 8809711227509923257}
   m_Layer: 5
-  m_Name: Buying
+  m_Name: Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2716,41 +2716,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RectTransform: {fileID: 360052254719575566}
   TemporaryParentTransform: {fileID: 0}
-  IsPointerEnter: 1
   Elements:
-  - Name: Cost
+  - Name: COST
     GameObject: {fileID: 2800673412174313965}
     Text: {fileID: 6898356245662505225}
     Icon: {fileID: 5099331343588170781}
-  - Name: Health
+  - Name: HEALTH
     GameObject: {fileID: 4294463158686105108}
     Text: {fileID: 8107478191628805067}
     Icon: {fileID: 9000259698099927825}
-  - Name: Armour
+  - Name: ARMOUR
     GameObject: {fileID: 397726425021308528}
     Text: {fileID: 9207142654321569270}
     Icon: {fileID: 7676722431655625629}
-  - Name: Speed
+  - Name: SPEED
     GameObject: {fileID: 674005656514735066}
     Text: {fileID: 7560177468774344089}
     Icon: {fileID: 7769755963730981559}
-  - Name: Attack
+  - Name: ATTACK
     GameObject: {fileID: 8578662323146764161}
     Text: {fileID: 9041562749623529043}
     Icon: {fileID: 2651432313356405273}
-  - Name: Lable
+  - Name: LABLE
     GameObject: {fileID: 9007338706344986777}
     Text: {fileID: 5768049805306127954}
-    Icon: {fileID: 3204025348711835305}
-  - Name: Description
+    Icon: {fileID: 0}
+  - Name: DESCRIPTION
     GameObject: {fileID: 4205715795587549027}
     Text: {fileID: 938037334288331649}
-    Icon: {fileID: 1847636577711482825}
-  - Name: Special
+    Icon: {fileID: 0}
+  - Name: SPECIAL
     GameObject: {fileID: 6065490310078018072}
     Text: {fileID: 0}
-    Icon: {fileID: 8627090658728247997}
-  - Name: Portrait
+    Icon: {fileID: 0}
+  - Name: PORTRAIT
     GameObject: {fileID: 41884786131226768}
     Text: {fileID: 0}
     Icon: {fileID: 7007970230600173904}

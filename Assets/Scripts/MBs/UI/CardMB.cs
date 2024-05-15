@@ -10,6 +10,26 @@ using UnityEngine.UI;
 
 public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public RectTransform RectTransform;
+    public Transform TemporaryParentTransform;
+
+    private Action _actionPointerExit;
+
+    private EcsWorld _world;
+
+    public List<Element> Elements = new List<Element>()
+    {
+        new Element(Data.Glossary.CardElements.COST),
+        new Element(Data.Glossary.CardElements.HEALTH),
+        new Element(Data.Glossary.CardElements.ARMOUR),
+        new Element(Data.Glossary.CardElements.SPEED),
+        new Element(Data.Glossary.CardElements.ATTACK),
+        new Element(Data.Glossary.CardElements.LABLE),
+        new Element(Data.Glossary.CardElements.DESCRIPTION),
+        new Element(Data.Glossary.CardElements.SPECIAL),
+        new Element(Data.Glossary.CardElements.PORTRAIT)
+    };
+
     [Serializable]
     public sealed class Element
     {
@@ -24,26 +44,14 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
 
-    public RectTransform RectTransform;
-    public Transform TemporaryParentTransform;
-    public bool IsPointerEnter = true;
-
-    private EcsWorld _world;
-
-    private Action _actionPointerExit;
-
-    public List<Element> Elements = new List<Element>()
+    public void SetCFG(CardSO cfg)
     {
-        new Element("Cost"),
-        new Element("Health"),
-        new Element("Armour"),
-        new Element("Speed"),
-        new Element("Attack"),
-        new Element("Lable"),
-        new Element("Description"),
-        new Element("Special"),
-        new Element("Portrait")
-    };
+        foreach (var item in Elements)
+        {
+            //switch
+
+        }
+    }
 
     public void SetActionPointerExit(Action action)
     {
@@ -67,10 +75,6 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        /* RectTransform.sizeDelta = new Vector2(150, 200);
-        transform.parent = ParentTransform; */
-        //Destroy(_view.gameObject);
-        Debug.Log($"Exit {this.name}");
         _actionPointerExit?.Invoke();
     }
 }

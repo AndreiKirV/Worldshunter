@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Client
         private IEcsSystems _systems;
 
         [SerializeField] private Data _data;
+        [SerializeField] private List<CardSO> _cardsSO;
 
         //private Data _data;
 
