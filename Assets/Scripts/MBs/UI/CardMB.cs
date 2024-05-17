@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public RectTransform RectTransform;
     public Transform TemporaryParentTransform;
+    public RectTransform _viewRect;
 
     private Action _actionPointerExit;
 
@@ -44,11 +46,39 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
 
-    public void SetCFG(CardSO cfg)
+    public void SetCfg(CardSO cfg)
     {
         foreach (var item in Elements)
         {
-            //switch
+            switch (item.Name)
+            {
+                case Data.Glossary.CardElements.COST:
+                    item.Text.text = $"{cfg.Cost}";
+                    break;
+                case Data.Glossary.CardElements.HEALTH:
+                    item.Text.text = $"{cfg.Health}";
+                    break;
+                case Data.Glossary.CardElements.ARMOUR:
+                    item.Text.text = $"{cfg.Armour}";
+                    break;
+                case Data.Glossary.CardElements.SPEED:
+                    item.Text.text = $"{cfg.Speed}";
+                    break;
+                case Data.Glossary.CardElements.ATTACK:
+                    item.Text.text = $"{cfg.Damage}";
+                    break;
+                case Data.Glossary.CardElements.LABLE:
+                    item.Text.text = $"{cfg.Name}";
+                    break;
+                case Data.Glossary.CardElements.DESCRIPTION:
+                    item.Text.text = $"{cfg.Description}";
+                    break;
+                case Data.Glossary.CardElements.SPECIAL://доделать если решу ввести спешелы, на нг
+                    break;
+                case Data.Glossary.CardElements.PORTRAIT:
+                    item.Icon.sprite = cfg.PortraitView;
+                    break;
+            }
 
         }
     }
@@ -58,9 +88,9 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _actionPointerExit += action;
     }
 
-    public void SetWorld(EcsWorld world) 
+    public void SetWorld(EcsWorld world)
     {
-        _world = world;    
+        _world = world;
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -44,15 +44,15 @@ public class Data
     {
         public static class CardElements
         {
-            public static readonly string COST = "COST";
-            public static readonly string HEALTH = "HEALTH";
-            public static readonly string ARMOUR = "ARMOUR";
-            public static readonly string SPEED = "SPEED";
-            public static readonly string ATTACK = "ATTACK";
-            public static readonly string LABLE = "LABLE";
-            public static readonly string DESCRIPTION = "DESCRIPTION";
-            public static readonly string SPECIAL = "SPECIAL";
-            public static readonly string PORTRAIT = "PORTRAIT";
+            public const string COST = "COST";
+            public const string HEALTH = "HEALTH";
+            public const string ARMOUR = "ARMOUR";
+            public const string SPEED = "SPEED";
+            public const string ATTACK = "ATTACK";
+            public const string LABLE = "LABLE";
+            public const string DESCRIPTION = "DESCRIPTION";
+            public const string SPECIAL = "SPECIAL";
+            public const string PORTRAIT = "PORTRAIT";
         }
     }
 }

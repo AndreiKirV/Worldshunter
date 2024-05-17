@@ -15,4 +15,17 @@ public class CardSO : ScriptableObject
     [SerializeField] private int _damage;
     [SerializeField] private int _attackDistance;
     //тип атаки
+
+    public string Name => _name;
+    public string Description => _description;
+    public Sprite PortraitView => _portraitView;
+    public int Speed => _speed;
+    public int Armour => _armour;
+    public int Health => _health;
+    public int Cost => _cost;
+    public int Damage => _damage;
+    public int AttackDistance => _attackDistance;
+
+
+    //public enum 
 }

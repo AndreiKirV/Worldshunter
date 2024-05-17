@@ -607,6 +607,8 @@ MonoBehaviour:
   _cardsSO:
   - {fileID: 11400000, guid: bc7c6d68b7f75c64baae0341546598fd, type: 2}
   - {fileID: 11400000, guid: 11c7ef64cc8b96c478693f1557c82a4b, type: 2}
+  - {fileID: 11400000, guid: 87c6f540beb02dc49b5c841317e3498b, type: 2}
+  - {fileID: 11400000, guid: d3b84654728e1f0498891dead081862a, type: 2}
 --- !u!1 &1069513149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,6 +1066,10 @@ PrefabInstance:
     - target: {fileID: 396304134703408910, guid: 2365523840bbad94e93ea1c16c26b3c0, type: 3}
       propertyPath: m_Color.a
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218511882414335604, guid: 2365523840bbad94e93ea1c16c26b3c0, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1367288258370291347, guid: 2365523840bbad94e93ea1c16c26b3c0, type: 3}
       propertyPath: m_AnchorMax.x

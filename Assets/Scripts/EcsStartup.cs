@@ -104,11 +104,12 @@ namespace Client
             //инициализирую ui элементы, чтобы не тыкалось мимо ui
 
             //создаю стартовые карты
-            for (int i = 0; i < 12; i++)
+            foreach (var item in _cardsSO)
             {
                 CardMB cardMB = Instantiate(_data.CardMBPref, _data.CardsContentTransform);
                 cardMB.TemporaryParentTransform = _data.CardTemporaryParentTransform;
                 cardMB.SetWorld(_world);
+                cardMB.SetCfg(item);
             }
             //создаю стартовые карты
         }
