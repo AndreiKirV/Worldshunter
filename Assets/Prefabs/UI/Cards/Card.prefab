@@ -290,10 +290,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3329955835766456528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.032266717, y: 0.24254507}
-  m_AnchorMax: {x: 0.5485437, y: 0.66250247}
-  m_AnchoredPosition: {x: -0.09931946, y: 0.20891571}
-  m_SizeDelta: {x: -0.23438907, y: 0.5390115}
+  m_AnchorMin: {x: 0.065000005, y: 0.37484026}
+  m_AnchorMax: {x: 0.5, y: 0.71128994}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7642637822989955697
 CanvasRenderer:
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1657261485, guid: 1bca0e153924fd5489f77dbd22f63b52, type: 3}
+  m_Sprite: {fileID: 2117432586, guid: 1bca0e153924fd5489f77dbd22f63b52, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3055,6 +3055,10 @@ MonoBehaviour:
     GameObject: {fileID: 41884786131226768}
     Text: {fileID: 0}
     Icon: {fileID: 7007970230600173904}
+  - Name: DISTANCE
+    GameObject: {fileID: 598493370532205519}
+    Text: {fileID: 8057464415308319333}
+    Icon: {fileID: 4615069624789838392}
 --- !u!1 &8185299343037439454
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class Data
 {
     public Map Map = new Map();
     public Gravity Gravity = new Gravity();
+    public ImageCollector ImageManager = new ImageCollector();
     //скомпоновать, когда придет время
     public Camera Camera;
     public GameObject Canvas;
@@ -24,7 +25,6 @@ public class Data
     public CardMB CardMBPref;
 
     public int MaxSpawnChip;
-    public int MaxTileIsOneByOne;
     public bool IsUiFree = true;
 
     public Data()
@@ -53,6 +53,12 @@ public class Data
             public const string DESCRIPTION = "DESCRIPTION";
             public const string SPECIAL = "SPECIAL";
             public const string PORTRAIT = "PORTRAIT";
+            public const string DISTANCE = "DISTANCE";
+
+            public enum AttackType
+            {
+                None, Ranged, Melee
+            }
         }
     }
 }

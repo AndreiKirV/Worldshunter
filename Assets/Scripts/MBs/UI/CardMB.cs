@@ -29,7 +29,8 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         new Element(Data.Glossary.CardElements.LABLE),
         new Element(Data.Glossary.CardElements.DESCRIPTION),
         new Element(Data.Glossary.CardElements.SPECIAL),
-        new Element(Data.Glossary.CardElements.PORTRAIT)
+        new Element(Data.Glossary.CardElements.PORTRAIT),
+        new Element(Data.Glossary.CardElements.DISTANCE)
     };
 
     [Serializable]
@@ -63,9 +64,21 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     break;
                 case Data.Glossary.CardElements.SPEED:
                     item.Text.text = $"{cfg.Speed}";
+
+                    if(cfg.Speed == 0)
+                        item.GameObject.SetActive(false);
+
                     break;
                 case Data.Glossary.CardElements.ATTACK:
                     item.Text.text = $"{cfg.Damage}";
+
+                    if (cfg.AttacType == Data.Glossary.CardElements.AttackType.None)
+                        item.GameObject.SetActive(false);
+                    else if (cfg.AttacType == Data.Glossary.CardElements.AttackType.Melee)
+                        item.Icon.sprite = Data.GetInstance().ImageManager.MeleeAttackIcon;
+                    else if (cfg.AttacType == Data.Glossary.CardElements.AttackType.Ranged)
+                        item.Icon.sprite = Data.GetInstance().ImageManager.RangedAttackIcon;
+
                     break;
                 case Data.Glossary.CardElements.LABLE:
                     item.Text.text = $"{cfg.Name}";
@@ -77,6 +90,13 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     break;
                 case Data.Glossary.CardElements.PORTRAIT:
                     item.Icon.sprite = cfg.PortraitView;
+                    break;
+                case Data.Glossary.CardElements.DISTANCE:
+                    item.Text.text = $"{cfg.AttackDistance}";
+
+                    if (cfg.AttacType == Data.Glossary.CardElements.AttackType.None)
+                        item.GameObject.SetActive(false);
+
                     break;
             }
 

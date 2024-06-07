@@ -24,9 +24,10 @@ MonoBehaviour:
     \u043A\u043B\u0430\u0440\u0430 \u043F\u043E \u0448\u0430\u0441\u0441\u0435 \u0441\u0443\u0448\u043A\u0438
     \u043A\u0430\u0440\u043B \u0442\u0440\u0430\u043C\u0431\u043E\u043D"
   _portraitView: {fileID: 21300000, guid: 440e15b1b58cc4d0b8395cd4edc4d3e4, type: 3}
-  _speed: 3
+  _speed: 0
   _armour: 0
   _health: 1
   _cost: 2
   _damage: 1
   _attackDistance: 1
+  _attackType: 1

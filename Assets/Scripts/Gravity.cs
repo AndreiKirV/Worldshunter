@@ -10,5 +10,6 @@ namespace Client
     {
         public float Scale;
         public bool IsOneByOne = true;
+        public int MaxTileIsOneByOne;
     }
 }

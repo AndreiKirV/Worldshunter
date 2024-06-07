@@ -28,7 +28,7 @@ namespace Client
             {
                 if (!isProcessing)
                 {
-                    if (_data.Value.Gravity.IsOneByOne && _actuationCountIsOneByOne < _data.Value.MaxTileIsOneByOne)//TODO
+                    if (_data.Value.Gravity.IsOneByOne && _actuationCountIsOneByOne < _data.Value.Gravity.MaxTileIsOneByOne)//TODO
                         isProcessing = true;
 
                     ref TileComp tempTileComp = ref _tilePool.Value.Get(entityTile);
@@ -53,7 +53,7 @@ namespace Client
                             }
 
                             //TODOкогда тайлы падают все вместе, отрабатывает при приземелении
-                            if (_data.Value.Gravity.IsOneByOne && _actuationCountIsOneByOne >= _data.Value.MaxTileIsOneByOne)//TODO
+                            if (_data.Value.Gravity.IsOneByOne && _actuationCountIsOneByOne >= _data.Value.Gravity.MaxTileIsOneByOne)//TODO
                             {
                                 foreach (var entityInstalledTile in _tileInstalledFilter.Value)
                                 {

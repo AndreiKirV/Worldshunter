@@ -21,3 +21,4 @@ MonoBehaviour:
   _cost: 2
   _damage: 1
   _attackDistance: 1
+  _attackType: 2

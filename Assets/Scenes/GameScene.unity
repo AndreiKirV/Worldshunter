@@ -595,6 +595,10 @@ MonoBehaviour:
     Gravity:
       Scale: 300
       IsOneByOne: 1
+      MaxTileIsOneByOne: 7
+    ImageManager:
+      RangedAttackIcon: {fileID: -1657261485, guid: 1bca0e153924fd5489f77dbd22f63b52, type: 3}
+      MeleeAttackIcon: {fileID: 1274058117, guid: 1bca0e153924fd5489f77dbd22f63b52, type: 3}
     Camera: {fileID: 963194227}
     Canvas: {fileID: 1157888185}
     GameChipPref: {fileID: 3841644623797097962, guid: 98ce7da08f8510e4f9f02a720a6ce480, type: 3}
@@ -602,7 +606,6 @@ MonoBehaviour:
     CardsContentTransform: {fileID: 1159039910}
     CardMBPref: {fileID: 6343278324498046699, guid: 7e0e4d300d49852479bf28e28c4797ad, type: 3}
     MaxSpawnChip: 5
-    MaxTileIsOneByOne: 7
     IsUiFree: 1
   _cardsSO:
   - {fileID: 11400000, guid: bc7c6d68b7f75c64baae0341546598fd, type: 2}
@@ -1214,6 +1217,10 @@ PrefabInstance:
     - target: {fileID: 7900390308534317536, guid: 2365523840bbad94e93ea1c16c26b3c0, type: 3}
       propertyPath: m_Name
       value: CanvasMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900390308534317536, guid: 2365523840bbad94e93ea1c16c26b3c0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9069958925540683288, guid: 2365523840bbad94e93ea1c16c26b3c0, type: 3}
       propertyPath: m_SizeDelta.x

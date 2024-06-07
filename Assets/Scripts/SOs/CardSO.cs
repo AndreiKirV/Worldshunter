@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AttacType = Data.Glossary.CardElements.AttackType;
 
 [CreateAssetMenu(fileName = "New CardSO", menuName = "WorldsHunterSO/CardSO", order = 51)]
 public class CardSO : ScriptableObject
@@ -14,6 +15,7 @@ public class CardSO : ScriptableObject
     [SerializeField] private int _cost;
     [SerializeField] private int _damage;
     [SerializeField] private int _attackDistance;
+    [SerializeField] private AttacType _attackType;
     //тип атаки
 
     public string Name => _name;
@@ -25,6 +27,7 @@ public class CardSO : ScriptableObject
     public int Cost => _cost;
     public int Damage => _damage;
     public int AttackDistance => _attackDistance;
+    public AttacType AttacType => _attackType;
 
 
     //public enum 
