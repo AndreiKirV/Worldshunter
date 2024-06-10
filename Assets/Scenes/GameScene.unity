@@ -608,16 +608,11 @@ MonoBehaviour:
       CardTemporaryParentTransform: {fileID: 1161097339}
       CardsContentTransform: {fileID: 1159039910}
       IsUiFree: 1
-    Camera: {fileID: 963194227}
-    Canvas: {fileID: 1157888185}
-    CardTemporaryParentTransform: {fileID: 1161097339}
-    CardsContentTransform: {fileID: 1159039910}
-    IsUiFree: 1
-  _cardsSO:
-  - {fileID: 11400000, guid: bc7c6d68b7f75c64baae0341546598fd, type: 2}
-  - {fileID: 11400000, guid: 11c7ef64cc8b96c478693f1557c82a4b, type: 2}
-  - {fileID: 11400000, guid: 87c6f540beb02dc49b5c841317e3498b, type: 2}
-  - {fileID: 11400000, guid: d3b84654728e1f0498891dead081862a, type: 2}
+    CardsSO:
+    - {fileID: 11400000, guid: 11c7ef64cc8b96c478693f1557c82a4b, type: 2}
+    - {fileID: 11400000, guid: bc7c6d68b7f75c64baae0341546598fd, type: 2}
+    - {fileID: 11400000, guid: 87c6f540beb02dc49b5c841317e3498b, type: 2}
+    - {fileID: 11400000, guid: d3b84654728e1f0498891dead081862a, type: 2}
 --- !u!1 &1069513149
 GameObject:
   m_ObjectHideFlags: 0
