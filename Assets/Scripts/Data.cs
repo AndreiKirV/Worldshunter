@@ -11,21 +11,18 @@ using UnityEngine;
 [Serializable]
 public class Data
 {
+    [Header("Настройки карты")]
     public Map Map = new Map();
+    [Header("Настройки гравитации")]
     public Gravity Gravity = new Gravity();
-    public ImageCollector ImageManager = new ImageCollector();
-    //скомпоновать, когда придет время
-    public Camera Camera;
-    public GameObject Canvas;
-
-    public GameChipMB GameChipPref;
-
-    public Transform CardTemporaryParentTransform;
-    public Transform CardsContentTransform;
-    public CardMB CardMBPref;
-
-    public int MaxSpawnChip;
-    public bool IsUiFree = true;
+    [Header("Сборщик изображений")]
+    public ImageCollector ImageCollector = new ImageCollector();
+    [Header("Сборщик префабов")]
+    public PrefCollector PrefCollector = new PrefCollector();
+    [Header("Сборщик UI")]
+    public UICollector UICollector = new UICollector();
+    [Header("Конфиги игровых карт")]
+    public List<CardSO> CardsSO;
 
     public Data()
     {

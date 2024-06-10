@@ -6,5 +6,7 @@ using UnityEngine;
 [Serializable]
 public class PrefCollector
 {
-
+    public TileMB TilePref;
+    public GameChipMB GameChipPref;
+    public CardMB CardMBPref;
 }

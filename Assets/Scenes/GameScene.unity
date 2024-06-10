@@ -585,27 +585,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     Map:
-      TilePref: {fileID: 6237665126161083904, guid: 1a15473782a3e2c46ade381cbd41a2a7, type: 3}
       Playground: {fileID: 1069513154}
       MaxPosition: {x: 0, y: 0}
       MinPosition: {x: 0, y: 0}
       TileStartPosY: 25
       GameChipStartPosY: 25
+      MaxSpawnChip: 5
       Tiles: []
     Gravity:
       Scale: 300
       IsOneByOne: 1
       MaxTileIsOneByOne: 7
-    ImageManager:
+    ImageCollector:
       RangedAttackIcon: {fileID: -1657261485, guid: 1bca0e153924fd5489f77dbd22f63b52, type: 3}
       MeleeAttackIcon: {fileID: 1274058117, guid: 1bca0e153924fd5489f77dbd22f63b52, type: 3}
+    PrefCollector:
+      TilePref: {fileID: 6237665126161083904, guid: 1a15473782a3e2c46ade381cbd41a2a7, type: 3}
+      GameChipPref: {fileID: 3841644623797097962, guid: 98ce7da08f8510e4f9f02a720a6ce480, type: 3}
+      CardMBPref: {fileID: 6343278324498046699, guid: 7e0e4d300d49852479bf28e28c4797ad, type: 3}
+    UICollector:
+      Canvas: {fileID: 1157888185}
+      CardTemporaryParentTransform: {fileID: 1161097339}
+      CardsContentTransform: {fileID: 1159039910}
+      IsUiFree: 1
     Camera: {fileID: 963194227}
     Canvas: {fileID: 1157888185}
-    GameChipPref: {fileID: 3841644623797097962, guid: 98ce7da08f8510e4f9f02a720a6ce480, type: 3}
     CardTemporaryParentTransform: {fileID: 1161097339}
     CardsContentTransform: {fileID: 1159039910}
-    CardMBPref: {fileID: 6343278324498046699, guid: 7e0e4d300d49852479bf28e28c4797ad, type: 3}
-    MaxSpawnChip: 5
     IsUiFree: 1
   _cardsSO:
   - {fileID: 11400000, guid: bc7c6d68b7f75c64baae0341546598fd, type: 2}

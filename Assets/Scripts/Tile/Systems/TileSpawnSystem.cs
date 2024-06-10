@@ -31,10 +31,10 @@ namespace Client
             {
                 for (int i = (int)_data.Value.Map.MinPosition.y; i <= _data.Value.Map.MaxPosition.y; i++)
                 {
-                    TileMB tempTile = StartSpawn(_data.Value.Map.Playground.transform, _data.Value.Map.TilePref);//TODO вывести в отдельный метод
+                    TileMB tempTile = StartSpawn(_data.Value.Map.Playground.transform, _data.Value.PrefCollector.TilePref);//TODO вывести в отдельный метод
 
                     tempTile.transform.localPosition = new Vector3(_data.Value.Map.MaxPosition.x + 1, _data.Value.Map.TileStartPosY, i);
-                    tempTile.name = $"{_data.Value.Map.TilePref.name} [{_data.Value.Map.MaxPosition.x + 1}]:[{i}]";
+                    tempTile.name = $"{_data.Value.PrefCollector.TilePref.name} [{_data.Value.Map.MaxPosition.x + 1}]:[{i}]";
                     _data.Value.Map.SetDeltaPos(tempTile.Pos);
                     _data.Value.Map.Tiles.Add(tempTile);
 
@@ -55,10 +55,10 @@ namespace Client
             {
                 for (int i = (int)_data.Value.Map.MinPosition.y; i <= _data.Value.Map.MaxPosition.y; i++)
                 {
-                    TileMB tempTile = StartSpawn(_data.Value.Map.Playground.transform, _data.Value.Map.TilePref);
+                    TileMB tempTile = StartSpawn(_data.Value.Map.Playground.transform, _data.Value.PrefCollector.TilePref);
 
                     tempTile.transform.localPosition = new Vector3(_data.Value.Map.MinPosition.x - 1, _data.Value.Map.TileStartPosY, i);
-                    tempTile.name = $"{_data.Value.Map.TilePref.name} [{_data.Value.Map.MinPosition.x - 1}]:[{i}]";
+                    tempTile.name = $"{_data.Value.PrefCollector.TilePref.name} [{_data.Value.Map.MinPosition.x - 1}]:[{i}]";
                     _data.Value.Map.SetDeltaPos(tempTile.Pos);
                     _data.Value.Map.Tiles.Add(tempTile);
 
@@ -80,10 +80,10 @@ namespace Client
             {
                 for (int i = (int)_data.Value.Map.MinPosition.x; i <= _data.Value.Map.MaxPosition.x; i++)
                 {
-                    TileMB tempTile = StartSpawn(_data.Value.Map.Playground.transform, _data.Value.Map.TilePref);
+                    TileMB tempTile = StartSpawn(_data.Value.Map.Playground.transform, _data.Value.PrefCollector.TilePref);
 
                     tempTile.transform.localPosition = new Vector3(i, _data.Value.Map.TileStartPosY, _data.Value.Map.MaxPosition.y + 1);
-                    tempTile.name = $"{_data.Value.Map.TilePref.name} [{i}]:[{_data.Value.Map.MaxPosition.y + 1}]";
+                    tempTile.name = $"{_data.Value.PrefCollector.TilePref.name} [{i}]:[{_data.Value.Map.MaxPosition.y + 1}]";
                     _data.Value.Map.SetDeltaPos(tempTile.Pos);
                     _data.Value.Map.Tiles.Add(tempTile);
 
@@ -104,10 +104,10 @@ namespace Client
             {
                 for (int i = (int)_data.Value.Map.MinPosition.x; i <= _data.Value.Map.MaxPosition.x; i++)
                 {
-                    TileMB tempTile = StartSpawn(_data.Value.Map.Playground.transform, _data.Value.Map.TilePref);
+                    TileMB tempTile = StartSpawn(_data.Value.Map.Playground.transform, _data.Value.PrefCollector.TilePref);
 
                     tempTile.transform.localPosition = new Vector3(i, _data.Value.Map.TileStartPosY, _data.Value.Map.MinPosition.y - 1);
-                    tempTile.name = $"{_data.Value.Map.TilePref.name} [{i}]:[{_data.Value.Map.MinPosition.y - 1}]";
+                    tempTile.name = $"{_data.Value.PrefCollector.TilePref.name} [{i}]:[{_data.Value.Map.MinPosition.y - 1}]";
                     _data.Value.Map.SetDeltaPos(tempTile.Pos);
                     _data.Value.Map.Tiles.Add(tempTile);
 

@@ -14,11 +14,11 @@ public class UIEventer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _data.IsUiFree = false;
+        _data.UICollector.IsUiFree = false;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _data.IsUiFree = true;
+        _data.UICollector.IsUiFree = true;
     }
 }

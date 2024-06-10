@@ -75,9 +75,9 @@ public class CardMB : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     if (cfg.AttacType == Data.Glossary.CardElements.AttackType.None)
                         item.GameObject.SetActive(false);
                     else if (cfg.AttacType == Data.Glossary.CardElements.AttackType.Melee)
-                        item.Icon.sprite = Data.GetInstance().ImageManager.MeleeAttackIcon;
+                        item.Icon.sprite = Data.GetInstance().ImageCollector.MeleeAttackIcon;
                     else if (cfg.AttacType == Data.Glossary.CardElements.AttackType.Ranged)
-                        item.Icon.sprite = Data.GetInstance().ImageManager.RangedAttackIcon;
+                        item.Icon.sprite = Data.GetInstance().ImageCollector.RangedAttackIcon;
 
                     break;
                 case Data.Glossary.CardElements.LABLE:

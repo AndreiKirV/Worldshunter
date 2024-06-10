@@ -8,8 +8,6 @@ namespace Client
     [Serializable]
     public class Map
     {
-        public TileMB TilePref;
-
         public PlaygroundMB Playground;
         
         public Vector2 MaxPosition;
@@ -17,6 +15,8 @@ namespace Client
 
         public float TileStartPosY;
         public float GameChipStartPosY;
+
+        public int MaxSpawnChip;
 
         public List<TileMB> Tiles = new List<TileMB>();
 

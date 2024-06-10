@@ -13,7 +13,6 @@ namespace Client
         private IEcsSystems _systems;
 
         [SerializeField] private Data _data;
-        [SerializeField] private List<CardSO> _cardsSO;
 
         //private Data _data;
 
@@ -91,8 +90,8 @@ namespace Client
         private void PreStart()
         {
             //определил дальность появления тайлов и геймштук в мире
-            _data.Map.TileStartPosY = MathF.Abs(_data.Canvas.transform.position.z - _data.Map.Playground.transform.position.z) - 1;
-            _data.Map.GameChipStartPosY = MathF.Abs(_data.Canvas.transform.position.z - _data.Map.Playground.transform.position.z) - 1;
+            _data.Map.TileStartPosY = MathF.Abs(_data.UICollector.Canvas.transform.position.z - _data.Map.Playground.transform.position.z) - 1;
+            _data.Map.GameChipStartPosY = MathF.Abs(_data.UICollector.Canvas.transform.position.z - _data.Map.Playground.transform.position.z) - 1;
             //определил дальность появления тайлов и геймштук в мире
 
             //инициализирую ui элементы, чтобы не тыкалось мимо ui
@@ -104,10 +103,10 @@ namespace Client
             //инициализирую ui элементы, чтобы не тыкалось мимо ui
 
             //создаю стартовые карты
-            foreach (var item in _cardsSO)
+            foreach (var item in _data.CardsSO)
             {
-                CardMB cardMB = Instantiate(_data.CardMBPref, _data.CardsContentTransform);
-                cardMB.TemporaryParentTransform = _data.CardTemporaryParentTransform;
+                CardMB cardMB = Instantiate(_data.PrefCollector.CardMBPref, _data.UICollector.CardsContentTransform);
+                cardMB.TemporaryParentTransform = _data.UICollector.CardTemporaryParentTransform;
                 cardMB.SetWorld(_world);
                 cardMB.SetCfg(item);
             }

@@ -33,7 +33,7 @@ public class TileMB : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!_clickTileEventPool.Has(Entity) && _data.IsUiFree)
+        if (!_clickTileEventPool.Has(Entity) && _data.UICollector.IsUiFree)
             _world.GetPool<Client.ClickTileEvent>().Add(Entity);
 
         Debug.Log($"Кликнули по TileMB {this.gameObject.name}");

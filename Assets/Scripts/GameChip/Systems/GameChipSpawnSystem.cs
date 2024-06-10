@@ -25,7 +25,7 @@ namespace Client
                 {
                     ref GameChipComp gameChipComp = ref _gameChipCompPool.Value.Add(entity);
                     
-                    tileComp.GameChip = StartSpawn(tileComp.MB.Transform, _data.Value.GameChipPref);
+                    tileComp.GameChip = StartSpawn(tileComp.MB.Transform, _data.Value.PrefCollector.GameChipPref);
                     gameChipComp.ZeroPositionY = tileComp.GameChip.transform.localPosition.y;
                     gameChipComp.MB = tileComp.GameChip;
 
@@ -39,9 +39,9 @@ namespace Client
                 {
                     ref GameChipComp gameChipComp = ref _gameChipCompPool.Value.Get(entity);
 
-                    if (gameChipComp.Level < _data.Value.MaxSpawnChip)
+                    if (gameChipComp.Level < _data.Value.Map.MaxSpawnChip)
                     {
-                        tileComp.GameChip = StartSpawn(tileComp.MB.Transform, _data.Value.GameChipPref);
+                        tileComp.GameChip = StartSpawn(tileComp.MB.Transform, _data.Value.PrefCollector.GameChipPref);
                         gameChipComp.ZeroPositionY = tileComp.GameChip.transform.localPosition.y + gameChipComp.Level;
                         gameChipComp.MB = tileComp.GameChip;
 

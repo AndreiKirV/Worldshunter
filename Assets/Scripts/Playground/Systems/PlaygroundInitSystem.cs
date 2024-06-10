@@ -24,9 +24,9 @@ namespace Client
             {
                 for (int j = -1; j <= 1; j++)
                 {
-                    TileMB tempTile = StartSpawn<TileMB>(_playground.transform, _data.Value.Map.TilePref);
+                    TileMB tempTile = StartSpawn<TileMB>(_playground.transform, _data.Value.PrefCollector.TilePref);
                     tempTile.transform.localPosition = new Vector3(i, _data.Value.Map.TileStartPosY, j);
-                    tempTile.name = $"{_data.Value.Map.TilePref.name} [{i}]:[{j}]";
+                    tempTile.name = $"{_data.Value.PrefCollector.TilePref.name} [{i}]:[{j}]";
                     _data.Value.Map.Tiles.Add(tempTile);
                     _data.Value.Map.SetDeltaPos(tempTile.Pos);
 
